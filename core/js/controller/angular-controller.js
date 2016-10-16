@@ -1,5 +1,5 @@
 ﻿
-app.controller('AppMainController', function ($rootScope,$scope, $http, $q, $location, $filter, $window,$cookieStore,$uibModal,svcLogin,svcMemberType,svcSetting) {
+app.controller('AppMainController', function ($rootScope,$scope, $http, $q, $location, $filter,svcYear, $window,$cookieStore,$uibModal,svcLogin,svcMemberType,svcSetting) {
      $scope.cookieCheck = $cookieStore.get('credentials');
 	$scope.spinner = { Active:false }
 	
@@ -9,8 +9,13 @@ app.controller('AppMainController', function ($rootScope,$scope, $http, $q, $loc
 		$scope.session = { userData:$scope.cookieCheck , isAuthenticated: true,  loading: false };
 	}
 
-	
-
+	$scope.loadYear = function(){
+		svcYear.List('',0,0).then(function(r){
+			$scope.yearList = r.Results;
+			$scope.Year = $scope.yearList[0].Year;
+		})
+	}
+	$scope.loadYear();
 	
    $scope.init = function (isAuthenticated) {
          $scope.session.isAuthenticated = isAuthenticated;

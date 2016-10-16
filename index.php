@@ -36,9 +36,10 @@ if(!isset($_SESSION['isAuthenticated'])){ $isAuthenticated = false; }else{ $isAu
 					<a href="#"><i class="fa fa-folder"></i><span>Census</span></a> 
 					<ul class="sub-menu">						
 						<li><a href="#/census/age"><i class="fa fa-folder"></i> Population by Age </a></li>
-						<li><a href="#/census/gender"><i class="fa fa-folder"></i> Population by Gender </a></li>
-						<li><a href="#/census/livelihood"><i class="fa fa-folder"></i>  Livelihood </a></li>
-						<li><a href="#/census/employmentStatus"><i class="fa fa-folder"></i> Employment Status </a></li>
+						<li><a href="#/census/gender/{{Year}}"><i class="fa fa-folder"></i> Population by Gender </a></li>
+						<li><a href="#/census/livelihood/{{Year}}"><i class="fa fa-folder"></i>  Livelihood </a></li>
+						<li><a href="#/census/employmentStatus/{{Year}}"><i class="fa fa-folder"></i> Employment Status </a></li>
+						<li><a href="#/census/educationalAttainment/{{Year}}"><i class="fa fa-folder"></i> Educational Attainment </a></li>
 						<li><a href="#/census/member"><i class="fa fa-folder"></i> Residence Records </a></li>
 
 					</ul>		

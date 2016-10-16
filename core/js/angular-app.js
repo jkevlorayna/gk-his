@@ -136,21 +136,27 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
 			})
 			.state('census.livelihood',
 			{
-				url: '/livelihood',
+				url: '/livelihood/:Year',
 				templateUrl: "views/census/livelihood.html",
 				controller: "AppCensusLivelihoodController",
 			})
 			.state('census.gender',
 			{
-				url: '/gender',
+				url: '/gender/:Year',
 				templateUrl: "views/census/gender.html",
 				controller: "AppCensusGenderController",
 			})
 			.state('census.employmentStatus',
 			{
-				url: '/employmentStatus',
+				url: '/employmentStatus/:Year',
 				templateUrl: "views/census/employmentStatus.html",
 				controller: "AppCensusEmploymentStatusController",
+			})
+			.state('census.educationalAttainment',
+			{
+				url: '/educationalAttainment/:Year',
+				templateUrl: "views/census/educationalAttainment.html",
+				controller: "AppCensusEducationalAttainmentController",
 			})
 			.state('census.age',
 			{

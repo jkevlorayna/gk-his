@@ -1,39 +1,72 @@
 
-app.controller('AppCensusLivelihoodController', function ($scope, $http, $q, $location,growl,$uibModal,$timeout,svcCensus) {
+app.controller('AppCensusLivelihoodController', function ($scope, $http, $q, $location,growl,$uibModal,$timeout,svcCensus,svcYear,$stateParams) {
+	$scope.Year = $stateParams.Year;	
 
-	$scope.load = function(){
-			svcCensus.Livelihood('').then(function(r){
-				 $scope.Results = r;
-			})
-	}
-	$scope.load();
+	$scope.loadAll = function(){
+				$q.all([svcYear.List('',0,0)]).then(function(r){
+					$scope.yearList = r[0].Results;
+						$scope.DateFrom = moment($scope.Year).startOf('year').format('YYYY-MM-DD');
+						$scope.DateTo = moment($scope.Year).endOf('year').format('YYYY-MM-DD');
+						
+						svcCensus.Livelihood($scope.DateFrom,$scope.DateTo).then(function(r){
+							$scope.Results = r;
+							$scope.Count = r.length;
+						})
+				})
+	}			
+	$scope.loadAll();
+	
+	$scope.changeYear = function(){		
+			$location.path("/census/livelihood/"+$scope.Year);
+	}			
+		
 
-    $scope.amChartOptions = $timeout(function(){
-    	return {
-            data:$scope.Results,
-            type: "pie",
-            theme: 'light',
-			"valueField": "Number",
-			"titleField": "Livelihood",
-			"balloon":{
-				"fixedPosition":false
-			},
-			"export": {
-			"enabled": true
-			}
-    	}
-    }.bind(this), 1000) // delay chart render by 1 second
+				$scope.amChartOptions = $timeout(function(){
+					return {
+						data:$scope.Results,
+						type: "pie",
+						theme: 'light',
+						"valueField": "Number",
+						"titleField": "Livelihood",
+						"balloon":{
+							"fixedPosition":false
+						},
+						"export": {
+						"enabled": true
+						}
+					}
+				}.bind(this), 1000) // delay chart render by 1 second
+	
+
+
+	
 	
 });
 
-app.controller('AppCensusGenderController', function ($scope, $http, $q, $location,growl,$uibModal,$timeout,svcCensus) {
+app.controller('AppCensusGenderController', function ($scope, $http, $q, $location,growl,$uibModal,$timeout,svcCensus,svcYear,$stateParams) {
 
-	$scope.load = function(){
-			svcCensus.Gender('').then(function(r){
-				 $scope.Results = r;
-			})
-	}
-	$scope.load();
+
+	$scope.Year = $stateParams.Year;	
+
+	$scope.loadAll = function(){
+				$q.all([svcYear.List('',0,0)]).then(function(r){
+					$scope.yearList = r[0].Results;
+						$scope.DateFrom = moment($scope.Year).startOf('year').format('YYYY-MM-DD');
+						$scope.DateTo = moment($scope.Year).endOf('year').format('YYYY-MM-DD');
+						
+						svcCensus.Gender($scope.DateFrom,$scope.DateTo).then(function(r){
+							$scope.Results = r;
+							$scope.Count = r.length;
+						})
+				})
+	}			
+	$scope.loadAll();
+	
+	$scope.changeYear = function(){		
+			$location.path("/census/gender/"+$scope.Year);
+	}	
+
+
 
     $scope.amChartOptions = $timeout(function(){
     	return {
@@ -54,14 +87,31 @@ app.controller('AppCensusGenderController', function ($scope, $http, $q, $locati
 });
 
 
-app.controller('AppCensusEmploymentStatusController', function ($scope, $http, $q, $location,growl,$uibModal,$timeout,svcCensus) {
+app.controller('AppCensusEmploymentStatusController', function ($scope, $http, $q, $location,growl,$uibModal,$timeout,svcCensus,$stateParams,svcYear) {
 
-	$scope.load = function(){
-			svcCensus.EmploymentStatus('').then(function(r){
-				 $scope.Results = r;
-			})
-	}
-	$scope.load();
+
+	$scope.Year = $stateParams.Year;	
+
+	$scope.loadAll = function(){
+				$q.all([svcYear.List('',0,0)]).then(function(r){
+					$scope.yearList = r[0].Results;
+						$scope.DateFrom = moment($scope.Year).startOf('year').format('YYYY-MM-DD');
+						$scope.DateTo = moment($scope.Year).endOf('year').format('YYYY-MM-DD');
+						
+						svcCensus.EmploymentStatus($scope.DateFrom,$scope.DateTo).then(function(r){
+							$scope.Results = r;
+							$scope.Count = r.length;
+						})
+				})
+	}			
+	$scope.loadAll();
+	
+	$scope.changeYear = function(){		
+			$location.path("/census/employmentStatus/"+$scope.Year);
+	}	
+
+
+
 
     $scope.amChartOptions = $timeout(function(){
     	return {
@@ -70,6 +120,49 @@ app.controller('AppCensusEmploymentStatusController', function ($scope, $http, $
             theme: 'light',
 			"valueField": "Number",
 			"titleField": "EmploymentStatus",
+			"balloon":{
+				"fixedPosition":false
+			},
+			"export": {
+			"enabled": true
+			}
+    	}
+    }.bind(this), 1000) // delay chart render by 1 second
+	
+});
+
+
+app.controller('AppCensusEducationalAttainmentController', function ($scope, $http, $q, $location,growl,$uibModal,$timeout,svcCensus,$stateParams,svcYear) {
+
+
+	$scope.Year = $stateParams.Year;	
+
+	$scope.loadAll = function(){
+				$q.all([svcYear.List('',0,0)]).then(function(r){
+					$scope.yearList = r[0].Results;
+						$scope.DateFrom = moment($scope.Year).startOf('year').format('YYYY-MM-DD');
+						$scope.DateTo = moment($scope.Year).endOf('year').format('YYYY-MM-DD');
+						
+						svcCensus.EducationalAttainment($scope.DateFrom,$scope.DateTo).then(function(r){
+							$scope.Results = r;
+							$scope.Count = r.length;
+						})
+				})
+	}			
+	$scope.loadAll();
+	
+	$scope.changeYear = function(){		
+			$location.path("/census/educationalAttainment/"+$scope.Year);
+	}	
+
+
+    $scope.amChartOptions = $timeout(function(){
+    	return {
+            data:$scope.Results,
+            type: "pie",
+            theme: 'light',
+			"valueField": "Number",
+			"titleField": "EducationalAttainment",
 			"balloon":{
 				"fixedPosition":false
 			},

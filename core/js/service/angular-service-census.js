@@ -1,10 +1,10 @@
 app.factory('svcCensus', function ($rootScope, $http, $q) {
     $this = {
-        Livelihood: function (year) {
+        Livelihood: function (DateFrom,DateTo) {
             var deferred = $q.defer();
             $http({
                 method: 'GET',
-                url: BasePath+'/class/census/livelihood?year='+year
+                url: BasePath+'/class/census/livelihood?DateFrom='+DateFrom + '&DateTo='+DateTo
             }).success(function (data, status) {
                 deferred.resolve(data);
             }).error(function (data, status) {
@@ -12,11 +12,11 @@ app.factory('svcCensus', function ($rootScope, $http, $q) {
             });
             return deferred.promise;
         },
-		Gender: function (year) {
+		Gender: function (DateFrom,DateTo) {
             var deferred = $q.defer();
             $http({
                 method: 'GET',
-                url: BasePath+'/class/census/gender?year='+year
+                url: BasePath+'/class/census/gender?DateFrom='+DateFrom + '&DateTo='+DateTo
             }).success(function (data, status) {
                 deferred.resolve(data);
             }).error(function (data, status) {
@@ -24,11 +24,22 @@ app.factory('svcCensus', function ($rootScope, $http, $q) {
             });
             return deferred.promise;
         },
-		EmploymentStatus: function (year) {
+		EmploymentStatus: function (DateFrom,DateTo) {
             var deferred = $q.defer();
             $http({
                 method: 'GET',
-                url: BasePath+'/class/census/employmentStatus?year='+year
+                url: BasePath+'/class/census/employmentStatus?DateFrom='+DateFrom + '&DateTo='+DateTo
+            }).success(function (data, status) {
+                deferred.resolve(data);
+            }).error(function (data, status) {
+                deferred.reject(data);
+            });
+            return deferred.promise;
+        },EducationalAttainment: function (DateFrom,DateTo) {
+            var deferred = $q.defer();
+            $http({
+                method: 'GET',
+                url: BasePath+'/class/census/educationalAttainment?DateFrom='+DateFrom + '&DateTo='+DateTo
             }).success(function (data, status) {
                 deferred.resolve(data);
             }).error(function (data, status) {
