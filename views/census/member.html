@@ -5,15 +5,16 @@
 						</div>
 <div class="row">
 	<div class="col-md-12">
+	
+	
+	
 					<form ng-submit="load()" class="form-inline filter_form">
-
-																<div class="form-group">
-							<input type="text" class="form-control" ng-model="searchText">
-
-						</div>
-						<div class="form-group">
-							<button class="btn btn-primary nomargin" type="submit"><i class="fa fa-search"></i> Search</button>
-						</div>
+						<div class="input-group">
+						<input type="text" class="form-control" ng-model="searchText">
+						<span class="input-group-btn">
+							<button class="btn btn-primary" type="submit"><i class="fa fa-search"></i> Search</button>
+						</span>
+						</div><!-- /input-group -->
 					</form>
 					<hr>
 				<table class="table table-bordered table-condensed">

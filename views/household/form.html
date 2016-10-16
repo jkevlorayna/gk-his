@@ -20,7 +20,15 @@
     <label>Livelihood:</label>
     <select type="text" class="form-control" ng-model="formData.LivelihoodId" ng-options="row.Id as row.Name for row in livelihoodList" required></select>
   </div>
-  
+  <div class="form-group">
+    <label>Survey Date:</label>	
+	<div class="input-group">
+		<input type="text" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="formData.SurveyDate" is-open="popup1" datepicker-options="dateOptions"  close-text="Close" />
+		<span class="input-group-btn">
+		<button type="button" class="btn btn-default" ng-click="popup1=true"><i class="glyphicon glyphicon-calendar"></i></button>
+		</span>
+	</div>	
+  </div>
 </div>
 						
 						

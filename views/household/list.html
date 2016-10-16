@@ -9,12 +9,12 @@
 						<a href="#/household/form/0" class="btn btn-success"><i class="fa fa-plus"></i> Add</a>
 					</div>
 					<form ng-submit="load()" class="form-inline filter_form">
-						<div class="form-group">
-							<input type="text" class="form-control" ng-model="searchText">
-						</div>
-						<div class="form-group">
-							<button class="btn btn-primary nomargin" type="submit">Submit</button>
-						</div>
+						<div class="input-group">
+						<input type="text" class="form-control" ng-model="searchText">
+						<span class="input-group-btn">
+							<button class="btn btn-primary" type="submit"><i class="fa fa-search"></i> Search</button>
+						</span>
+						</div><!-- /input-group -->
 					</form>
 					<hr>
 				<table class="table table-bordered table-condensed">
@@ -23,6 +23,7 @@
 						<th>Household No</th>
 						<th>Address</th>
 						<th>Livelihood</th>
+						<th>Survey Date</th>
 						<th style="width:10%;"></th>
 					</tr>
 				</thead>
@@ -31,6 +32,7 @@
 						<td>{{row.HouseholdNo}}</td>
 						<td>{{row.Address}}</td>
 						<td>{{row.Livelihood}}</td>
+						<td>{{row.SurveyDate | date:'MM/dd/yyyy'}}</td>
 						<td>
 							<a class="btn btn-success btn-sm" href="#/household/form/{{row.Id}}">  <i class="fa fa-edit"></i> </a>
 							<button class="btn btn-danger btn-sm" ng-click="openDeleteModal('md',row.Id)">  <i class="fa fa-trash-o"></i> </button>

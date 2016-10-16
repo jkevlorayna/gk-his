@@ -46,7 +46,7 @@ class HouseholdRepository{
 			$POST->HouseholdNo = !isset($POST->HouseholdNo) ? '' : $POST->HouseholdNo; 
 			$POST->Address = !isset($POST->Address) ? '' : $POST->Address; 
 			$POST->LivelihoodId = !isset($POST->LivelihoodId) ? '' : $POST->LivelihoodId; 
-			$POST->SurveyDate = date('Y-m-d'); 
+			$POST->SurveyDate = !isset($POST->SurveyDate) ? '' : $POST->SurveyDate; 
 			return $POST;
 		}
 		function Save($POST){

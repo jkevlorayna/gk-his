@@ -63,10 +63,11 @@ app.controller('AppHouseholdFormController', function ($scope, $http, $q, $locat
 	$scope.getById = function(){
 		svcHouseHold.GetById($scope.Id).then(function(r){
 			$scope.formData = r;
+			$scope.formData.SurveyDate = new Date(r.SurveyDate);
 		})	
 	}
 	if($scope.Id == 0){
-		$scope.formData = { }
+		$scope.formData = { SurveyDate: new Date() }
 		$scope.formData.MemberList = [];
 	}else{
 		$scope.getById();	
