@@ -1,0 +1,49 @@
+
+<div class="block-flat">
+						<div class="header">		
+								<h3>Recidence Records List</h3>
+						</div>
+<div class="row">
+	<div class="col-md-12">
+					<form ng-submit="load()" class="form-inline filter_form">
+
+																<div class="form-group">
+							<input type="text" class="form-control" ng-model="searchText">
+
+						</div>
+						<div class="form-group">
+							<button class="btn btn-primary nomargin" type="submit"><i class="fa fa-search"></i> Search</button>
+						</div>
+					</form>
+					<hr>
+				<table class="table table-bordered table-condensed">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Gender</th>
+						<th>Age</th>
+						<th>Civil Status</th>
+						<th>Employment Status</th>
+						<th>Educational Attainment</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="row in list">
+						<td>{{row.Name}}</td>
+						<td>{{row.Gender}}</td>
+						<td class="text-center">{{row.Age}}</td>
+						<td>{{row.CivilStatus}}</td>
+						<td>{{row.EmploymentStatus}}</td>
+						<td>{{row.EducationalAttainment}}</td>
+						<td>
+							<a class="btn btn-success btn-sm" href="javascript:void(0)" ng-click="formModal('md',row.Id)">  <i class="fa fa-edit"></i> </a>
+							<button class="btn btn-danger btn-sm" ng-click="openDeleteModal('md',row.Id)">  <i class="fa fa-trash-o"></i> </button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			  <uib-pagination ng-model="pageNo" ng-click="pageChanged()" items-per-page="pageSize" total-items="count"  max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages"></uib-pagination>
+	</div>
+</div>
+</div>

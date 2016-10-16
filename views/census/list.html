@@ -1,0 +1,44 @@
+
+<div class="block-flat">
+						<div class="header">		
+								<h3>Household List</h4>
+						</div>
+<div class="row">
+	<div class="col-md-12">
+					<div class="pull-right">
+						<a href="#/household/form/0" class="btn btn-success"><i class="fa fa-plus"></i> Add</a>
+					</div>
+					<form ng-submit="load()" class="form-inline filter_form">
+						<div class="form-group">
+							<input type="text" class="form-control" ng-model="searchText">
+						</div>
+						<div class="form-group">
+							<button class="btn btn-primary nomargin" type="submit">Submit</button>
+						</div>
+					</form>
+					<hr>
+				<table class="table table-bordered table-condensed">
+				<thead>
+					<tr>
+						<th>Household No</th>
+						<th>Address</th>
+						<th>Livelihood</th>
+						<th style="width:10%;"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="row in list">
+						<td>{{row.HouseholdNo}}</td>
+						<td>{{row.Address}}</td>
+						<td>{{row.Livelihood}}</td>
+						<td>
+							<a class="btn btn-success btn-sm" href="#/household/form/{{row.Id}}">  <i class="fa fa-edit"></i> </a>
+							<button class="btn btn-danger btn-sm" ng-click="openDeleteModal('md',row.Id)">  <i class="fa fa-trash-o"></i> </button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			  <uib-pagination ng-model="pageNo" ng-click="pageChanged()" items-per-page="pageSize" total-items="count"  max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages"></uib-pagination>
+	</div>
+</div>
+</div>

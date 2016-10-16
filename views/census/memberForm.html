@@ -1,0 +1,57 @@
+
+        <div class="modal-body">
+			
+			<form class="form-horizontal" ng-submit="Save()">
+				<div class="form-group">
+					<label class="control-label col-sm-3"> Name:</label>
+					<div class="col-sm-9">
+					<input type="text" class="form-control" ng-model="formData.Name">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-3"> Gender:</label>
+					<div class="col-sm-9">
+						<select class="form-control" ng-model="formData.Gender">
+							<option>Male</option>
+							<option>Female</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-3"> Age:</label>
+					<div class="col-sm-9">
+							<input class="form-control" ng-model="formData.Age">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-3"> Civil Status:</label>
+					<div class="col-sm-9">
+							<input class="form-control" ng-model="formData.CivilStatus">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-3"> EmploymentStatus:</label>
+					<div class="col-sm-9">
+						<select class="form-control" ng-model="formData.EmploymentStatusId" ng-options="es.Id as es.Name for es in employmentStatusList">
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-3"> Educational Attainment:</label>
+					<div class="col-sm-9">
+						<select class="form-control" ng-model="formData.EducationalAttainmentId" ng-options="ea.Id as ea.Name for ea in educationalAttainmentList">
+						</select>
+					</div>
+				</div>
+  <div class="form-group"> 
+    <div class="col-sm-offset-3 col-sm-9">
+      <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Submit</button>
+    </div>
+  </div>
+</form>
+			
+			
+        </div>
+        <div class="modal-footer text-center">
+            <button class="btn btn-default" type="button" ng-click="close()"><i class="fa fa-times"></i> Cancel</button>
+        </div>

@@ -1,0 +1,23 @@
+
+<div class="block-flat">
+						<div class="header">		
+								<h3>Employment Status</h4>
+						</div>
+<div class="row">
+	<div class="col-md-8">
+		<div  style="height: 400px; width: 100%;">
+		<am-chart id="myFirstChart" options="amChartOptions"></am-chart>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<table class="table">
+			<tbody>
+				<tr ng-repeat="row in Results">
+					<td>{{row.EmploymentStatus}}</td>
+					<td class="text-center">{{row.Number}}</td>
+				<tr>
+			</tbody>
+		</table>	
+	</div>
+</div>
+</div>

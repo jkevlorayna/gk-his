@@ -1,0 +1,74 @@
+
+<div class="block-flat">
+						<div class="header">		
+							<div class="alert alert-info alert-white rounded">
+								<div class="icon"><i class="fa fa-info-circle"></i></div>
+								<h4>Payment List</h4>
+							 </div>
+						</div>
+<div class="row">
+	<div class="col-md-12">
+					<form ng-submit="load()" class="form-inline filter_form">
+					<div class="form-group">
+						<label>Date From</label>
+						<div class="input-group">
+							<input type="text" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="DateFrom" is-open="popup1" datepicker-options="dateOptions"  close-text="Close" />
+							<span class="input-group-btn">
+							<button type="button" class="btn btn-default" ng-click="popup1=true"><i class="glyphicon glyphicon-calendar"></i></button>
+							</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label>Date To</label>
+						<div class="input-group">
+							<input type="text" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="DateTo" is-open="popup2" datepicker-options="dateOptions"  close-text="Close" />
+							<span class="input-group-btn">
+							<button type="button" class="btn btn-default" ng-click="popup2=true"><i class="glyphicon glyphicon-calendar"></i></button>
+							</span>
+						</div>
+					</div>
+						<div class="form-group">
+							<input type="text" class="form-control" ng-model="searchText">
+
+						</div>
+						<div class="form-group">
+							<button class="btn btn-primary nomargin" type="submit">Submit</button>
+						</div>
+					</form>
+					<hr>
+					<hr>
+				<div class="table-responsive">	
+				<table class="table table-bordered table-condensed">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Date</th>
+						<th>KAB</th>
+						<th>CBU</th>
+						<th>CBA</th>
+						<th>CF</th>
+						<th>Total</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="row in list">
+						<td>{{row.Firstname}} {{row.Middlename}} {{row.Lastname}}</td>
+						<td>{{row.Date | date:'MM/dd//yyyy'}}</td>
+						<td class="text-right">{{row.KAB}}</td>
+						<td class="text-right">{{row.CBU}}</td>
+						<td class="text-right">{{row.CBA}}</td>
+						<td class="text-right">{{row.CF}}</td>
+						<td class="text-right">{{row.Total}}</td>
+						<td>
+							<a class="btn btn-success btn-sm" href="#/member/payment/form/{{row.Id}}">  <i class="fa fa-edit"></i> </a>
+							<button class="btn btn-danger btn-sm" ng-click="openDeleteModal('md',row.Id)">  <i class="fa fa-trash-o"></i> </button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+			  <uib-pagination ng-model="pageNo" ng-click="pageChanged()" items-per-page="pageSize" total-items="count"  max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages"></uib-pagination>
+	</div>
+</div>
+</div>

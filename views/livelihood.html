@@ -1,0 +1,49 @@
+
+<div class="block-flat">
+						<div class="header">										
+
+								<h4>Livelihood List</h4>
+
+						</div>
+
+<div class="row">
+	<div class="col-md-3">
+		<form method="POST"  ng-submit="save()">
+				<div class="form-group">
+					<label for="exampleInputPassword1">Livelihood</label>
+					<input type="text" ng-model="formData.Name"  class="form-control" required>
+				</div>
+				<button type="submit"  class="btn btn-success"><i class="fa fa-save"></i> Save</button>
+		</form>
+	</div>
+	<div class="col-md-9">
+					<form ng-submit="load()">
+						<div class="input-group col-sm-5">
+							<input type="text" class="form-control" ng-model="searchText">
+							<span class="input-group-btn">
+							<button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-search"></i> Search</button>
+							</span>
+						</div>
+					</form>
+					
+				<table class="table table-bordered table-condensed">
+				<thead>
+					<tr>
+						<th>Livelihood</th>
+						<th width="20%"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="row in list">
+						<td>{{row.Name}}</td>
+						<td>
+							<button class="btn btn-success" ng-click="getById(row.Id)"> <i class="fa fa-edit"></i> </button>
+							<button class="btn btn-danger" ng-click="openDeleteModal('md',row.Id)"> <i class="fa fa-trash-o"></i> </button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			  <uib-pagination ng-model="pageNo" ng-click="pageChanged()" items-per-page="pageSize" total-items="count"  max-size="maxSize" class="" boundary-links="true" num-pages="numPages"></uib-pagination>
+	</div>
+</div>
+</div>
