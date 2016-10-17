@@ -158,6 +158,12 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
 				templateUrl: "views/census/educationalAttainment.html",
 				controller: "AppCensusEducationalAttainmentController",
 			})
+			.state('census.populationGrowth',
+			{
+				url: '/populationGrowth/:Year',
+				templateUrl: "views/census/populationGrowth.html",
+				controller: "AppCensusPopulationGrowthController",
+			})
 			.state('census.age',
 			{
 				url: '/age',

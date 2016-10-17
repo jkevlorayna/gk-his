@@ -47,6 +47,18 @@ app.factory('svcCensus', function ($rootScope, $http, $q) {
             });
             return deferred.promise;
         }
+		,PopulationGrowth: function (DateFrom,DateTo) {
+            var deferred = $q.defer();
+            $http({
+                method: 'GET',
+                url: BasePath+'/class/census/populationGrowth?DateFrom='+DateFrom + '&DateTo='+DateTo
+            }).success(function (data, status) {
+                deferred.resolve(data);
+            }).error(function (data, status) {
+                deferred.reject(data);
+            });
+            return deferred.promise;
+        }
     };
     return $this;
 });

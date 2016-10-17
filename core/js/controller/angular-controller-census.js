@@ -175,6 +175,68 @@ app.controller('AppCensusEducationalAttainmentController', function ($scope, $ht
 });
 
 
+app.controller('AppCensusPopulationGrowthController', function ($scope, $http, $q, $location,growl,$uibModal,$timeout,svcCensus,$stateParams,svcYear) {
+
+
+	$scope.Year = $stateParams.Year;	
+
+	$scope.loadAll = function(){
+				$q.all([svcYear.List('',0,0)]).then(function(r){
+					$scope.yearList = r[0].Results;
+						$scope.DateFrom = moment($scope.Year).startOf('year').format('YYYY-MM-DD');
+						$scope.DateTo = moment($scope.Year).endOf('year').format('YYYY-MM-DD');
+						
+						svcCensus.PopulationGrowth(null,null).then(function(r){
+							$scope.Results = r;
+							$scope.Count = r.length;
+						})
+				})
+	}			
+	$scope.loadAll();
+	
+	$scope.changeYear = function(){		
+			$location.path("/census/educationalAttainment/"+$scope.Year);
+	}	
+
+
+    $scope.amChartOptions = $timeout(function(){
+    	return {
+			"type": "serial",
+			"theme": "light",
+			"marginRight": 70,
+            data:$scope.Results,
+  "valueAxes": [{
+    "axisAlpha": 0,
+    "position": "left",
+    "title": "PopulationGrowth"
+  }],
+  "startDuration": 1,
+  "graphs": [{
+    "balloonText": "<b>[[category]]: [[value]]</b>",
+    "fillColorsField": "color",
+    "fillAlphas": 100,
+    "lineAlpha": 100,
+    "type": "column",
+    "valueField": "Number",
+  }],
+  "chartCursor": {
+    "categoryBalloonEnabled": false,
+    "cursorAlpha": 0,
+    "zoomable": false
+  },
+  "categoryField": "Year",
+  "categoryAxis": {
+    "gridPosition": "start",
+    "labelRotation": 45
+  },
+  "export": {
+    "enabled": true
+  }
+    	}
+    }.bind(this), 1000) // delay chart render by 1 second
+	
+});
+
 app.controller('AppCensusAgeController', function ($scope, $http, $q, $location,growl,$uibModal,$timeout,svcCensus) {
 
 	$scope.load = function(){

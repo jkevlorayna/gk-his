@@ -1,0 +1,40 @@
+
+<div class="block-flat">
+						<div class="header">		
+								<h3>Employment Status for the year {{Year}}</h4>
+						</div>
+<div class="row">
+	<div class="col-md-12">
+			<form class="form-inline">
+					<div class="form-group">
+						<label for="exampleInputName2">Year</label>
+						<select class="form-control" ng-model="Year" ng-options="y.Year as y.Year for y in yearList" ng-change="changeYear()">
+						</select>
+					</div>
+			</form>
+	</div>
+	<div class="col-md-12" ng-if="Count <= 0">
+		<br>
+		<div class="alert alert-danger">
+			No Data Found for this Year
+		</div>
+	</div>
+	
+	
+	<div class="col-md-8">
+		<div  style="height: 400px; width: 100%;">
+		<am-chart id="myFirstChart" options="amChartOptions"></am-chart>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<table class="table">
+			<tbody>
+				<tr ng-repeat="row in Results">
+					<td>{{row.Year}}</td>
+					<td class="text-center">{{row.Number}}</td>
+				<tr>
+			</tbody>
+		</table>	
+	</div>
+</div>
+</div>

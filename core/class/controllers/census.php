@@ -19,4 +19,9 @@
 		$result = $CensusRepo->EducationalAttainment($_GET['DateFrom'],$_GET['DateTo']);
 		echo json_encode($result);
 	});
+	$slim_app->get('/census/populationGrowth',function(){
+		$CensusRepo = new CensusRepository();
+		$result = $CensusRepo->PopulationGrowth($_GET['DateFrom'],$_GET['DateTo']);
+		echo json_encode($result);
+	});
 ?>

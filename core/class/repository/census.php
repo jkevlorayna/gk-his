@@ -54,6 +54,19 @@ class CensusRepository{
 			return $query->fetchAll(PDO::FETCH_OBJ);	
 		}
 		
+		function PopulationGrowth($DateFrom,$DateTo){
+			global $conn;
+			$where = "";
+			if($DateFrom != 'null' && $DateTo != 'null'){
+				$where .= "And Year BETWEEN '$DateFrom' AND '$DateTo'";
+			}
+
+			$query = $conn->query("Select *,COUNT(*) as Number FROM(Select YEAR(STR_TO_DATE(SurveyDate, '%Y-%m-%d')) as Year from tbl_member
+			LEFT JOIN tbl_household ON tbl_household.Id = tbl_member.HouseholdId) r where 1 = 1 $where GROUP BY Year
+			");
+			return $query->fetchAll(PDO::FETCH_ASSOC);	
+		}
+		
 }
 
 
