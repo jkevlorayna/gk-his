@@ -50,7 +50,7 @@ app.controller('AppHouseholdModalController', function ($rootScope,$scope, $http
     }
 });	
 
-app.controller('AppHouseholdFormController', function ($scope, $http, $q, $location, svcHouseHold,svcLivelihood,growl,$uibModal,$stateParams,svcEmploymentStatus,svcEducationalAttainment) {
+app.controller('AppHouseholdFormController', function ($scope, $http, $q, $location, svcHouseHold,svcLivelihood,growl,$uibModal,$stateParams,svcEmploymentStatus,svcEducationalAttainment,svcVillage) {
 
 	$scope.Id = $stateParams.Id;
 	$q.all([svcLivelihood.List('',0,0),svcEmploymentStatus.List('',0,0),svcEducationalAttainment.List('',0,0)]).then(function(r){
@@ -59,6 +59,14 @@ app.controller('AppHouseholdFormController', function ($scope, $http, $q, $locat
 		$scope.educationalAttainmentList = r[2].Results;
 	})
 	
+	$scope.SearchVillage = function(search){
+		return svcVillage.List(search,0,0).then(function(r){
+			return r.Results.map(function(item){
+				return item.Name;
+			});
+		})
+	}
+
 
 	$scope.getById = function(){
 		svcHouseHold.GetById($scope.Id).then(function(r){

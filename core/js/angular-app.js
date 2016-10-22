@@ -1,6 +1,6 @@
 ﻿var MainFolder = 'sams';
 var BasePath = 'core';
-var app = angular.module('app', ['ui.router','ui.bootstrap','ngSanitize', 'ui.select','angular-growl','ngCookies','ngAnimate','checklist-model','treasure-overlay-spinner','amChartsDirective']);
+var app = angular.module('app', ['ui.router','ui.bootstrap','ngSanitize', 'ui.select','angular-growl','ngCookies','ngAnimate','checklist-model','treasure-overlay-spinner','amChartsDirective','tableSort']);
 app.run(function ($rootScope, $location,$cookieStore,$window,svcLogin) {
    var cookieCheck = $cookieStore.get('credentials');
    
@@ -89,6 +89,12 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             templateUrl: "views/user_type.html",
             controller: "AppUserTypeController",
         })
+		.state('village',
+		{
+			url: '/village',
+			templateUrl: "views/village.html",
+			controller: "AppVillageController",
+		})
 		.state('livelihood',
 		{
 			url: '/livelihood',

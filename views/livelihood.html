@@ -2,7 +2,7 @@
 <div class="block-flat">
 						<div class="header">										
 
-								<h4>Livelihood List</h4>
+								<h3>Livelihood List</h3>
 
 						</div>
 
@@ -26,15 +26,15 @@
 						</div>
 					</form>
 					
-				<table class="table table-bordered table-condensed">
+				<table class="table table-bordered table-condensed" ts-wrapper>
 				<thead>
 					<tr>
-						<th>Livelihood</th>
+						<th ts-criteria="Name" ts-default>Livelihood</th>
 						<th width="20%"></th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="row in list">
+					<tr ng-repeat="row in list" ts-repeat>
 						<td>{{row.Name}}</td>
 						<td>
 							<button class="btn btn-success" ng-click="getById(row.Id)"> <i class="fa fa-edit"></i> </button>

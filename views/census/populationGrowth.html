@@ -1,18 +1,10 @@
 
 <div class="block-flat">
 						<div class="header">		
-								<h3>Employment Status for the year {{Year}}</h4>
+								<h3>Population Growth</h4>
 						</div>
 <div class="row">
-	<div class="col-md-12">
-			<form class="form-inline">
-					<div class="form-group">
-						<label for="exampleInputName2">Year</label>
-						<select class="form-control" ng-model="Year" ng-options="y.Year as y.Year for y in yearList" ng-change="changeYear()">
-						</select>
-					</div>
-			</form>
-	</div>
+
 	<div class="col-md-12" ng-if="Count <= 0">
 		<br>
 		<div class="alert alert-danger">

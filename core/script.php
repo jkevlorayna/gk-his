@@ -1,11 +1,12 @@
     <script src="<?php echo $path; ?>js/theme/jquery.min.js"></script>
 	<script src="<?php echo $path; ?>js/moment.js"></script> 
-	<script src="<?php echo $path; ?>js/angular.min.js"></script> 
+	<script src="<?php echo $path; ?>js/angular.js"></script> 
 	<script src="<?php echo $path; ?>js/angular-ui-router.js"></script> 
 
 	<script src="<?php echo $path; ?>js/angular-cookies.js"></script> 
 	<script src="<?php echo $path; ?>js/ui-bootstrap-tpls-1.3.2.js"></script> 
 	<script src="<?php echo $path; ?>js/angular-animate.js"></script> 
+	<script src="<?php echo $path; ?>js/angular-tablesort.js"></script> 
 	<script src="<?php echo $path; ?>js/checklist-model.js"></script> 
 	<script src="<?php echo $path; ?>js/angular-app.js"></script>  
 	<script src="<?php echo $path; ?>js/select.js"></script>  

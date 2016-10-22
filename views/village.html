@@ -2,21 +2,21 @@
 <div class="block-flat">
 						<div class="header">										
 
-								<h3>Diagnosis List</h3>
+								<h3>Village List</h3>
 
 						</div>
 
 <div class="row">
-	<div class="col-md-3">
+	<div class="col-md-4">
 		<form method="POST"  ng-submit="save()">
 				<div class="form-group">
-					<label for="exampleInputPassword1">Diagnosis</label>
+					<label for="exampleInputPassword1">Village</label>
 					<input type="text" ng-model="formData.Name"  class="form-control" required>
 				</div>
 				<button type="submit"  class="btn btn-success"><i class="fa fa-save"></i> Save</button>
 		</form>
 	</div>
-	<div class="col-md-9">
+	<div class="col-md-8">
 					<form ng-submit="load()">
 						<div class="input-group col-sm-5">
 							<input type="text" class="form-control" ng-model="searchText">
@@ -29,12 +29,12 @@
 				<table class="table table-bordered table-condensed" ts-wrapper>
 				<thead>
 					<tr>
-						<th ts-criteria="Name" ts-default>Diagnosis</th>
+						<th ts-criteria="Name" ts-default>Village</th>
 						<th width="20%"></th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="row in list" ts-repeat>
+					<tr ng-repeat="row in list">
 						<td>{{row.Name}}</td>
 						<td>
 							<button class="btn btn-success" ng-click="getById(row.Id)"> <i class="fa fa-edit"></i> </button>

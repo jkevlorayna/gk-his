@@ -15,6 +15,7 @@
 		
 	<link href="<?php echo $path; ?>fonts/font-awesome-4/css/font-awesome.min.css"  rel="stylesheet" >
 	<link href="<?php echo $path; ?>css/style.css" rel="stylesheet" />	
+	<link href="<?php echo $path; ?>css/tablesort.css" rel="stylesheet" />	
 	<link href="<?php echo $path; ?>css/sass/style.css" rel="stylesheet" />
 	<link href="<?php echo $path; ?>css/treasure-overlay-spinner.css" rel="stylesheet">
 

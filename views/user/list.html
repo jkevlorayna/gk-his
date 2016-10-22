@@ -42,20 +42,20 @@
 						</div>
 					</form>
 					
-				<table class="table table-bordered table-condensed">
+				<table class="table table-bordered table-condensed" ts-wrapper>
 				<thead>
 					<tr>
-						<th>Name</th>
-						<th>Username</th>
+						<th ts-criteria="name" ts-default>Name</th>
+						<th ts-criteria="username">Username</th>
 						<!-- <th>Password</th> -->
-						<th>User Type</th>
-						<th>Status</th>
+						<th ts-criteria="user_type">User Type</th>
+						<th ts-criteria="status">Status</th>
 						<th width="20%"></th>
 						<th width="15%"></th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="row in list">
+					<tr ng-repeat="row in list" ts-repeat>
 						<td>{{row.name}}</td>
 						<td>{{row.username}}</td>
 					<!-- 	<td>{{row.password}}</td> -->

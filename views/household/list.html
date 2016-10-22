@@ -17,18 +17,18 @@
 						</div><!-- /input-group -->
 					</form>
 					<hr>
-				<table class="table table-bordered table-condensed">
+				<table class="table table-bordered table-condensed" ts-wrapper>
 				<thead>
 					<tr>
-						<th>Household No</th>
-						<th>Address</th>
-						<th>Livelihood</th>
-						<th>Survey Date</th>
+						<th ts-criteria="HouseholdNo" ts-default>Household No</th>
+						<th ts-criteria="Address">Address</th>
+						<th ts-criteria="Livelihood">Livelihood</th>
+						<th ts-criteria="SurveyDate|parseDate">Survey Date</th>
 						<th style="width:10%;"></th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="row in list">
+					<tr ng-repeat="row in list" ts-repeat>
 						<td>{{row.HouseholdNo}}</td>
 						<td>{{row.Address}}</td>
 						<td>{{row.Livelihood}}</td>

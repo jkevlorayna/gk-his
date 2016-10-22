@@ -30,6 +30,7 @@ if(!isset($_SESSION['isAuthenticated'])){ $isAuthenticated = false; }else{ $isAu
 						<li><a href="#/employmentStatus"><i class="fa fa-folder"></i> Employment Status </a></li>
 						<li><a href="#/educationalAttainment"><i class="fa fa-folder"></i> Educational Attainment </a></li>
 						<li><a href="#/year"><i class="fa fa-folder"></i> Year </a></li>
+						<li><a href="#/village"><i class="fa fa-folder"></i> Village </a></li>
 					</ul>		
 				</li>
 				<li>

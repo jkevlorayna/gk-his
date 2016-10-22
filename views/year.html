@@ -1,9 +1,7 @@
 
 <div class="block-flat">
 						<div class="header">										
-
-								<h4>Year List</h4>
-
+								<h3>Year List</h4>
 						</div>
 
 <div class="row">
@@ -26,15 +24,15 @@
 						</div>
 					</form>
 					
-				<table class="table table-bordered table-condensed">
+				<table class="table table-bordered table-condensed" ts-wrapper>
 				<thead>
 					<tr>
-						<th>Year</th>
+						<th ts-criteria="Year" ts-default>Year</th>
 						<th width="20%"></th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="row in list">
+					<tr ng-repeat="row in list" ts-repeat>
 						<td>{{row.Year}}</td>
 						<td>
 							<button class="btn btn-success" ng-click="getById(row.Id)"> <i class="fa fa-edit"></i> </button>
