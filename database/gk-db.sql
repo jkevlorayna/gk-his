@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 16, 2016 at 06:16 PM
+-- Generation Time: Oct 22, 2016 at 11:19 AM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -110,18 +110,23 @@ CREATE TABLE IF NOT EXISTS `tbl_household` (
   `SurveyDate` date NOT NULL,
   `Address` varchar(150) NOT NULL,
   `LivelihoodId` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_household`
 --
 
 INSERT INTO `tbl_household` (`Id`, `HouseholdNo`, `SurveyDate`, `Address`, `LivelihoodId`) VALUES
-(12, '123', '0000-00-00', 'bago city', 1),
+(12, '123', '2015-09-04', 'bago city', 1),
 (13, '456', '2016-10-16', 'bago city', 1),
 (15, '455', '2016-10-16', 'ads', 2),
-(16, 'sads', '2016-10-16', 'das', 3),
-(17, '4233', '2016-10-16', 'dasdasd', 2);
+(16, 'sads', '2016-10-17', 'das', 3),
+(17, '4233', '2016-10-16', 'dasdasd', 2),
+(19, '2014 -test', '2014-10-16', 'test', 1),
+(20, '2013', '2013-10-16', 'dasd', 1),
+(21, 'dasd', '2012-10-16', 'das', 2),
+(22, 'dasd', '2011-10-16', 'das', 2),
+(23, 'dasd', '2010-10-16', 'das', 2);
 
 -- --------------------------------------------------------
 
@@ -158,7 +163,7 @@ CREATE TABLE IF NOT EXISTS `tbl_member` (
   `HouseholdId` int(11) NOT NULL,
   `EmploymentStatusId` int(11) NOT NULL,
   `EducationalAttainmentId` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_member`
@@ -167,7 +172,35 @@ CREATE TABLE IF NOT EXISTS `tbl_member` (
 INSERT INTO `tbl_member` (`Id`, `Name`, `Gender`, `Age`, `CivilStatus`, `HouseholdId`, `EmploymentStatusId`, `EducationalAttainmentId`) VALUES
 (47, 'test 166', 'Male', 1, 'single', 12, 1, 2),
 (50, 'john kevin', 'Male', 22, 'Single', 13, 1, 2),
-(51, 'member 2', 'Male', 22, 'Separated', 13, 1, 3);
+(51, 'member 2', 'Male', 22, 'Separated', 13, 1, 3),
+(53, 'test 123', 'Female', 22, 'Single', 12, 1, 3),
+(54, 'test 123', 'Female', 22, 'Single', 12, 1, 3),
+(55, 'asd', 'Female', 56, 'Single', 12, 1, 3),
+(56, 'test 123', 'Female', 22, 'Single', 12, 1, 3),
+(57, 'asd', 'Female', 56, 'Single', 12, 1, 3),
+(58, 'test', '', 89, 'Separated', 12, 0, 0),
+(59, 'adasd', 'Male', 55, 'Single', 16, 1, 3),
+(60, 'test 1', 'Male', 22, 'Single', 19, 1, 3),
+(61, 'test 2', 'Female', 22, 'Single', 19, 2, 3),
+(62, 'test 3', 'Female', 1, 'Widow', 19, 1, 2),
+(63, 'test 4', 'Male', 1, 'Separated', 19, 1, 3),
+(64, 'das', 'Female', 22, 'Widow', 20, 2, 3),
+(65, 'dasd', 'Female', 22, 'Widow', 20, 2, 2),
+(66, 'das', 'Female', 23, 'Separated', 21, 2, 3),
+(67, 'asd', 'Female', 23, 'Separated', 21, 1, 3),
+(68, 'das', 'Female', 23, 'Separated', 22, 2, 3),
+(69, 'asd', 'Female', 23, 'Separated', 22, 1, 3),
+(70, 'das', 'Female', 23, 'Separated', 23, 2, 3),
+(71, 'asd', 'Female', 23, 'Separated', 23, 1, 3),
+(72, '', '', 0, '', 12, 0, 0),
+(73, '', '', 0, '', 12, 0, 0),
+(74, '', '', 0, '', 12, 0, 0),
+(75, '', '', 0, '', 12, 0, 0),
+(76, '', '', 0, '', 12, 0, 0),
+(77, '', '', 0, '', 12, 0, 0),
+(78, '', '', 0, '', 12, 0, 0),
+(79, '', '', 0, '', 12, 0, 0),
+(80, '', '', 0, '', 12, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -179,7 +212,7 @@ CREATE TABLE IF NOT EXISTS `tbl_roles` (
 `Id` int(11) NOT NULL,
   `role` varchar(100) NOT NULL,
   `SqNo` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -261,7 +294,7 @@ CREATE TABLE IF NOT EXISTS `tbl_user_roles` (
 `Id` int(11) NOT NULL,
   `RoleId` int(11) NOT NULL,
   `UserId` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -285,13 +318,33 @@ INSERT INTO `tbl_user_type` (`Id`, `user_type`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_village`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_village` (
+`Id` int(11) NOT NULL,
+  `Name` varchar(100) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_village`
+--
+
+INSERT INTO `tbl_village` (`Id`, `Name`) VALUES
+(1, 'Village 1'),
+(2, 'Village 2'),
+(3, 'Village 3');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_year`
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_year` (
 `Id` int(11) NOT NULL,
   `Year` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=138 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=137 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_year`
@@ -301,11 +354,7 @@ INSERT INTO `tbl_year` (`Id`, `Year`) VALUES
 (129, 2014),
 (130, 2015),
 (131, 2016),
-(132, 2017),
-(133, 2018),
-(134, 2019),
-(136, 2013),
-(137, 2020);
+(136, 2013);
 
 --
 -- Indexes for dumped tables
@@ -390,6 +439,12 @@ ALTER TABLE `tbl_user_type`
  ADD PRIMARY KEY (`Id`);
 
 --
+-- Indexes for table `tbl_village`
+--
+ALTER TABLE `tbl_village`
+ ADD PRIMARY KEY (`Id`);
+
+--
 -- Indexes for table `tbl_year`
 --
 ALTER TABLE `tbl_year`
@@ -423,7 +478,7 @@ MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT for table `tbl_household`
 --
 ALTER TABLE `tbl_household`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `tbl_livelihood`
 --
@@ -433,12 +488,12 @@ MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT for table `tbl_member`
 --
 ALTER TABLE `tbl_member`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=53;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=81;
 --
 -- AUTO_INCREMENT for table `tbl_roles`
 --
 ALTER TABLE `tbl_roles`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbl_setting`
 --
@@ -458,17 +513,22 @@ MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 -- AUTO_INCREMENT for table `tbl_user_roles`
 --
 ALTER TABLE `tbl_user_roles`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=54;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbl_user_type`
 --
 ALTER TABLE `tbl_user_type`
 MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT for table `tbl_village`
+--
+ALTER TABLE `tbl_village`
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT for table `tbl_year`
 --
 ALTER TABLE `tbl_year`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=138;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=137;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
