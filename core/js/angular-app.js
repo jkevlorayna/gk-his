@@ -113,6 +113,12 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
 			templateUrl: "views/employmentStatus.html",
 			controller: "AppEmploymentStatusController",
 		})
+		.state('crime',
+		{
+			url: '/crime',
+			templateUrl: "views/crime.html",
+			controller: "AppCrimeController",
+		})
 		.state('educationalAttainment',
 		{
 			url: '/educationalAttainment',
@@ -146,6 +152,12 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
 				templateUrl: "views/census/livelihood.html",
 				controller: "AppCensusLivelihoodController",
 			})
+			.state('census.village',
+			{
+				url: '/village/:Year',
+				templateUrl: "views/census/village.html",
+				controller: "AppCensusVillageController",
+			})
 			.state('census.gender',
 			{
 				url: '/gender/:Year',
@@ -174,7 +186,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
 			{
 				url: '/age',
 				templateUrl: "views/census/age.html",
-				controller: "",
+				controller: "AppCensusAgeController",
 			})
 			.state('census.member',
 			{

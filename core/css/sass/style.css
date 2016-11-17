@@ -313,5 +313,7 @@ th {
   border-bottom: 0; }
   .login-container .block-flat .header h3 {
     color: #000 !important; }
-
+.amcharts-main-div a{
+		display:none !important;
+}
 /*# sourceMappingURL=style.css.map */

@@ -17,20 +17,20 @@
 						</div><!-- /input-group -->
 					</form>
 					<hr>
-				<table class="table table-bordered table-condensed">
+				<table class="table table-bordered table-condensed" ts-wrapper>
 				<thead>
 					<tr>
-						<th>Name</th>
-						<th>Gender</th>
-						<th>Age</th>
-						<th>Civil Status</th>
-						<th>Employment Status</th>
-						<th>Educational Attainment</th>
+						<th ts-criteria="Name" ts-default>Name</th>
+						<th ts-criteria="Gender">Gender</th>
+						<th ts-criteria="Age">Age</th>
+						<th ts-criteria="CivilStatus">Civil Status</th>
+						<th ts-criteria="EmploymentStatus">Employment Status</th>
+						<th ts-criteria="EducationalAttainment">Educational Attainment</th>
 						<th></th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="row in list">
+					<tr ng-repeat="row in list" ts-repeat>
 						<td>{{row.Name}}</td>
 						<td>{{row.Gender}}</td>
 						<td class="text-center">{{row.Age}}</td>

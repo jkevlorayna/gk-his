@@ -1,4 +1,9 @@
 <?php 
+	$slim_app->get('/census/village',function(){
+		$CensusRepo = new CensusRepository();
+		$result = $CensusRepo->Village($_GET['DateFrom'],$_GET['DateTo']);
+		echo json_encode($result);
+	});
 	$slim_app->get('/census/livelihood',function(){
 		$CensusRepo = new CensusRepository();
 		$result = $CensusRepo->Livelihood($_GET['DateFrom'],$_GET['DateTo']);
@@ -22,6 +27,11 @@
 	$slim_app->get('/census/populationGrowth',function(){
 		$CensusRepo = new CensusRepository();
 		$result = $CensusRepo->PopulationGrowth($_GET['DateFrom'],$_GET['DateTo']);
+		echo json_encode($result);
+	});
+	$slim_app->get('/census/age',function(){
+		$CensusRepo = new CensusRepository();
+		$result = $CensusRepo->Age($_GET['DateFrom'],$_GET['DateTo']);
 		echo json_encode($result);
 	});
 ?>

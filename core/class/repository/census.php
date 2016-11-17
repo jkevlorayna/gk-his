@@ -1,5 +1,16 @@
 <?php 
 class CensusRepository{
+		function Village($DateFrom,$DateTo){
+			global $conn;
+			$where = "";
+			if($DateFrom != 'null' && $DateTo != 'null'){
+				$where = "And SurveyDate BETWEEN '$DateFrom' AND '$DateTo'";
+			}
+			
+			$query = $conn->query("SELECT Address as Village,COUNT(*) as Number FROM tbl_household
+			WHERE 1 = 1 $where GROUP BY tbl_household.Address");
+			return $query->fetchAll(PDO::FETCH_OBJ);	
+		}
 		function Livelihood($DateFrom,$DateTo){
 			global $conn;
 			$where = "";
@@ -63,6 +74,29 @@ class CensusRepository{
 
 			$query = $conn->query("Select *,COUNT(*) as Number FROM(Select YEAR(STR_TO_DATE(SurveyDate, '%Y-%m-%d')) as Year from tbl_member
 			LEFT JOIN tbl_household ON tbl_household.Id = tbl_member.HouseholdId) r where 1 = 1 $where GROUP BY Year
+			");
+			return $query->fetchAll(PDO::FETCH_ASSOC);	
+		}
+		
+		function Age($DateFrom,$DateTo){
+			global $conn;
+			$where = "";
+			// if($DateFrom != 'null' && $DateTo != 'null'){
+				// $where .= "And Year BETWEEN '$DateFrom' AND '$DateTo'";
+			// }
+
+			$query = $conn->query("SELECT AgeGroup, count(*) AS Number 
+					FROM (SELECT
+						  CASE WHEN age BETWEEN 0 AND 9 THEN 'Age from 0 to 9' 
+						   WHEN age BETWEEN 10 and 19 THEN 'Age from 10 to 19' 
+						   WHEN age BETWEEN 20 and 29 THEN 'Age from 20 to 29' 
+						   WHEN age BETWEEN 30 and 39 THEN 'Age from 30 to 39' 
+						   WHEN age BETWEEN 40 and 49 THEN 'Age from 40 to 49' 
+						   WHEN age BETWEEN 50 and 59 THEN 'Age from 50 to 59'
+						   WHEN age >= 60 THEN '60 +' Else 'Age from 60 and up'
+                          END AS AgeGroup
+						  FROM tbl_member) entries
+					GROUP BY AgeGroup
 			");
 			return $query->fetchAll(PDO::FETCH_ASSOC);	
 		}

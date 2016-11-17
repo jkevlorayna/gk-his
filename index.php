@@ -31,6 +31,7 @@ if(!isset($_SESSION['isAuthenticated'])){ $isAuthenticated = false; }else{ $isAu
 						<li><a href="#/educationalAttainment"><i class="fa fa-folder"></i> Educational Attainment </a></li>
 						<li><a href="#/year"><i class="fa fa-folder"></i> Year </a></li>
 						<li><a href="#/village"><i class="fa fa-folder"></i> Village </a></li>
+						<li><a href="#/crime"><i class="fa fa-folder"></i> Crime </a></li>
 					</ul>		
 				</li>
 				<li>
@@ -39,6 +40,7 @@ if(!isset($_SESSION['isAuthenticated'])){ $isAuthenticated = false; }else{ $isAu
 						<li><a href="#/census/age"><i class="fa fa-folder"></i> Population by Age </a></li>
 						<li><a href="#/census/populationGrowth/{{Year}}"><i class="fa fa-folder"></i> Population by Growth </a></li>
 						<li><a href="#/census/gender/{{Year}}"><i class="fa fa-folder"></i> Population by Gender </a></li>
+						<li><a href="#/census/village/{{Year}}"><i class="fa fa-folder"></i> Population by Village </a></li>
 						<li><a href="#/census/livelihood/{{Year}}"><i class="fa fa-folder"></i>  Livelihood </a></li>
 						<li><a href="#/census/employmentStatus/{{Year}}"><i class="fa fa-folder"></i> Employment Status </a></li>
 						<li><a href="#/census/educationalAttainment/{{Year}}"><i class="fa fa-folder"></i> Educational Attainment </a></li>

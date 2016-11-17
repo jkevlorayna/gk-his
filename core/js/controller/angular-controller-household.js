@@ -83,10 +83,8 @@ app.controller('AppHouseholdFormController', function ($scope, $http, $q, $locat
 
 	$scope.PageTitle = $scope.Id == 0 ? 'Add New Household': 'Update Household Record' ;
 	$scope.save = function(){
-		$scope.spinner.Active = true;
 		svcHouseHold.Save($scope.formData).then(function (r) {
 			growl.success("Data Successfully Saved!");
-			$scope.spinner.Active = false;
         })	
 	}
 
@@ -95,4 +93,32 @@ app.controller('AppHouseholdFormController', function ($scope, $http, $q, $locat
 	}
 	
 	
+		$scope.openDeleteModal = function (size,id) {
+			var modal = $uibModal.open({
+			templateUrl: 'views/deletemodal/deleteModal.html',
+			controller: 'AppHouseholdFormModalController',
+			size: size,
+			resolve: {
+				dataId: function () {
+					return id;
+				}
+			}
+			});
+			modal.result.then(function () { }, function () { 
+				$scope.getById();
+			});
+	};
+	
 });
+app.controller('AppHouseholdFormModalController', function ($rootScope,$scope, $http, $q, $location, $filter, svcMember,growl,$uibModal,dataId,$uibModalInstance) {
+	$scope.id = dataId;
+	$scope.close = function(){
+		$uibModalInstance.dismiss();
+	}
+	$scope.delete = function () {
+		svcMember.deleteData($scope.id).then(function (response) {
+			growl.error("Data Successfully Deleted");
+			$scope.close();
+        });
+    }
+});	

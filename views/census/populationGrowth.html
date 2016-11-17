@@ -1,7 +1,7 @@
 
 <div class="block-flat">
 						<div class="header">		
-								<h3>Population Growth</h4>
+								<h3>Population Growth</h3>
 						</div>
 <div class="row">
 
@@ -12,14 +12,24 @@
 		</div>
 	</div>
 	
-	
+	<div id="printDiv">
 	<div class="col-md-8">
+		<div class="text-center visible-print-block reportHeader">
+			<h2>Population Growth</h2>
+		</div>
 		<div  style="height: 400px; width: 100%;">
 		<am-chart id="myFirstChart" options="amChartOptions"></am-chart>
 		</div>
 	</div>
 	<div class="col-md-4">
-		<table class="table">
+			<a href="" ng-click="PrintReport('printDiv')" class="btn btn-info pull-right print-btn"><i class="fa fa-print"></i> Print Report</a>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Year</th>
+					<th>Number</th>
+				</tr>
+			</thead>
 			<tbody>
 				<tr ng-repeat="row in Results">
 					<td>{{row.Year}}</td>
@@ -28,5 +38,7 @@
 			</tbody>
 		</table>	
 	</div>
+	</div>
+	
 </div>
 </div>

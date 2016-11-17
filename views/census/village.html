@@ -1,9 +1,10 @@
 
 <div class="block-flat">
 						<div class="header">		
-								<h3>Population By Gender for the Year {{Year}}</h3>
+								<h3>Village Population for Year the {{Year}}</h4>
 						</div>
 <div class="row">
+
 	<div class="col-md-12">
 			<form class="form-inline">
 					<div class="form-group">
@@ -22,7 +23,7 @@
 	<div id="printDiv">
 	<div class="col-md-8">
 		<div class="text-center visible-print-block reportHeader">
-			<h2>Population By Gender for the Year {{Year}}</h2>
+			<h2>Village Population for Year the {{Year}}</h2>
 		</div>
 		<div  style="height: 400px; width: 100%;">
 		<am-chart id="myFirstChart" options="amChartOptions"></am-chart>
@@ -33,18 +34,20 @@
 		<table class="table table-bordered">
 			<thead>
 				<tr>
-					<th>Gender</th>
+					<th>Village</th>
 					<th>Number</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr ng-repeat="row in Results">
-					<td>{{row.Gender}}</td>
+					<td>{{row.Village}}</td>
 					<td class="text-center">{{row.Number}}</td>
 				<tr>
 			</tbody>
 		</table>	
 	</div>
 	</div>
+	
+	
 </div>
 </div>

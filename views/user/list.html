@@ -65,11 +65,11 @@
 							<span class="label label-danger" ng-show="row.status=='InActive'">{{row.status}} </span>
 						</td>
 						<td class="text-center">
-							<button class="btn btn-success" ng-click="getById(row.user_id)"> <i class="fa fa-edit"></i> </button>
-							<button class="btn btn-danger" ng-click="openDeleteModal('md',row.user_id)"> <i class="fa fa-trash-o"></i>  </button>
+							<button class="btn btn-success btn-sm" ng-click="getById(row.user_id)"> <i class="fa fa-edit"></i> </button>
+							<button class="btn btn-danger btn-sm" ng-click="openDeleteModal('md',row.user_id)"> <i class="fa fa-trash-o"></i>  </button>
 						</td>
 						<td class="text-center">
-							<a  href="#/user/roles/{{row.user_id}}" class="btn btn-info"> View Role </a>
+							<a  href="#/user/roles/{{row.user_id}}" class="btn btn-info btn-sm"> View Role </a>
 						</td>
 					</tr>
 				</tbody>
