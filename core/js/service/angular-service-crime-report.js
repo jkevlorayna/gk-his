@@ -1,10 +1,10 @@
-app.factory('svcHouseHold', function ($rootScope, $http, $q) {
+app.factory('svcCrimeReport', function ($rootScope, $http, $q) {
     $this = {
-        List: function (searchText,pageNo,pageSize,DateFrom,DateTo) {
+        List: function (searchText,pageNo,pageSize) {
             var deferred = $q.defer();
             $http({
                 method: 'GET',
-                url: BasePath+'/class/household?searchText='+searchText+'&pageNo='+pageNo+'&pageSize='+pageSize+'&DateFrom='+DateFrom + '&DateTo='+DateTo
+                url: BasePath+'/class/crimereport?searchText='+searchText+'&pageNo='+pageNo+'&pageSize='+pageSize
             }).success(function (data, status) {
                 deferred.resolve(data);
             }).error(function (data, status) {
@@ -16,7 +16,7 @@ app.factory('svcHouseHold', function ($rootScope, $http, $q) {
             var deferred = $q.defer();
             $http({
                 method: 'GET',
-                url: BasePath+'/class/household/'+id
+                url: BasePath+'/class/crimereport/'+id
             }).success(function (data, status) {
                 deferred.resolve(data);
             }).error(function (data, status) {
@@ -28,7 +28,7 @@ app.factory('svcHouseHold', function ($rootScope, $http, $q) {
             var deferred = $q.defer();
             $http({
                 method: 'DELETE',
-                url: BasePath+'/class/household/'+id
+                url: BasePath+'/class/crimereport/'+id
             }).success(function (data, status) {
                 deferred.resolve(data);
             }).error(function (data, status) {
@@ -40,7 +40,7 @@ app.factory('svcHouseHold', function ($rootScope, $http, $q) {
             var deferred = $q.defer();
             $http({
                 method: 'POST',
-                url: BasePath+'/class/household',
+                url: BasePath+'/class/crimereport',
                 data:postData
             }).success(function (data, status) {
                 deferred.resolve(data);

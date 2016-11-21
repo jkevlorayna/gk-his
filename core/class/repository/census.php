@@ -81,9 +81,9 @@ class CensusRepository{
 		function Age($DateFrom,$DateTo){
 			global $conn;
 			$where = "";
-			// if($DateFrom != 'null' && $DateTo != 'null'){
-				// $where .= "And Year BETWEEN '$DateFrom' AND '$DateTo'";
-			// }
+			if($DateFrom != 'null' && $DateTo != 'null'){
+				$where .= "And SurveyDate BETWEEN '$DateFrom' AND '$DateTo'";
+			}
 
 			$query = $conn->query("SELECT AgeGroup, count(*) AS Number 
 					FROM (SELECT
@@ -95,7 +95,8 @@ class CensusRepository{
 						   WHEN age BETWEEN 50 and 59 THEN 'Age from 50 to 59'
 						   WHEN age >= 60 THEN '60 +' Else 'Age from 60 and up'
                           END AS AgeGroup
-						  FROM tbl_member) entries
+						  FROM tbl_member
+						  LEFT JOIN tbl_household ON tbl_household.Id = tbl_member.HouseholdId WHERE 1 = 1 $where) entries
 					GROUP BY AgeGroup
 			");
 			return $query->fetchAll(PDO::FETCH_ASSOC);	

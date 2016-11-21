@@ -10,20 +10,25 @@ class HouseholdRepository{
 			$query = $conn->prepare("DELETE FROM  tbl_household  WHERE Id = '$id'");
 			$query->execute();	
 		}
-		function DataList($searchText,$pageNo,$pageSize){
+		function DataList($searchText,$pageNo,$pageSize,$DateFrom,$DateTo){
 			global $conn;
 			$pageNo = ($pageNo - 1) * $pageSize; 
 			
 			$where = "";
+			$whereCount = "";
 			if($searchText != ''){
-				$where = "And HouseholdNo LIKE '%$searchText%'";
+				$where .= "And HouseholdNo LIKE '%$searchText%'";
+			}
+			if($DateFrom != 'null' && $DateTo != 'null'){
+				$where .= "And SurveyDate BETWEEN '$DateFrom' AND '$DateTo'";
+				$whereCount .= "And SurveyDate BETWEEN '$DateFrom' AND '$DateTo'";
 			}
 			
 			$limitCondition = $pageNo == 0 && $pageSize == 0 ? '' : 'LIMIT '.$pageNo.','.$pageSize;
 			$query = $conn->query("SELECT *,tbl_household.Id as Id,tbl_livelihood.Name as Livelihood FROM  tbl_household
 			LEFT JOIN  tbl_livelihood on tbl_livelihood.Id = tbl_household.LivelihoodId
 			WHERE 1 = 1 $where $limitCondition");
-			$count = $searchText != '' ?  $query->rowcount() : $conn->query("SELECT * FROM  tbl_household")->rowcount();
+			$count = $searchText != '' ?  $query->rowcount() : $conn->query("SELECT * FROM  tbl_household WHERE 1 = 1 $whereCount")->rowcount();
 			
 			$data = array();
 			$data['Results'] = $query->fetchAll(PDO::FETCH_ASSOC);

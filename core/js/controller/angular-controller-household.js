@@ -1,18 +1,31 @@
 ﻿
-app.controller('AppHouseholdController', function ($scope, $http, $q, $location, svcHouseHold,growl,$uibModal) {
-		$scope.pageNo = 1;
-		$scope.pageSize = 10;
-		if($scope.searchText == undefined){
-			$scope.searchText = '';
-		} 
+app.controller('AppHouseholdController', function ($scope, $http, $q, $location, svcHouseHold,growl,$uibModal,svcYear,$stateParams) {
+	$scope.Year = $stateParams.Year;	
+	
+	$scope.pageNo = 1;
+	$scope.pageSize = 10;
+	if($scope.searchText == undefined){
+		$scope.searchText = '';
+	} 
+	
+	$scope.load = function(){
+				$q.all([svcYear.List('',0,0)]).then(function(r){
+					$scope.yearList = r[0].Results;
+						$scope.DateFrom = moment($scope.Year).startOf('year').format('YYYY-MM-DD');
+						$scope.DateTo = moment($scope.Year).endOf('year').format('YYYY-MM-DD');
+						
+						svcHouseHold.List($scope.searchText,$scope.pageNo,$scope.pageSize,$scope.DateFrom,$scope.DateTo).then(function (r) {
+							$scope.list = r.Results;
+							$scope.count = r.Count;
+						})
+				})
+	}			
+	$scope.load();	
 		
-    $scope.load = function () {
-		svcHouseHold.List($scope.searchText,$scope.pageNo,$scope.pageSize).then(function (r) {
-            $scope.list = r.Results;
-            $scope.count = r.Count;
-        })
-    }
-    $scope.load();
+	$scope.changeYear = function(){		
+		$location.path("/household/list/"+$scope.Year);
+	}			
+
 	
 	$scope.pageChanged = function () { $scope.load();}
 	

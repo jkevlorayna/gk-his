@@ -8,7 +8,7 @@
 	});
 	$slim_app->get('/household',function(){
 		$HouseholdRepo = new HouseholdRepository();
-		$result = $HouseholdRepo->DataList($_GET['searchText'],$_GET['pageNo'],$_GET['pageSize']);
+		$result = $HouseholdRepo->DataList($_GET['searchText'],$_GET['pageNo'],$_GET['pageSize'],$_GET['DateFrom'],$_GET['DateTo']);
 		echo json_encode($result);
 	});
 	$slim_app->delete('/household/:id',function($id){

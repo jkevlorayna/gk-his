@@ -17,10 +17,11 @@ if(!isset($_SESSION['isAuthenticated'])){ $isAuthenticated = false; }else{ $isAu
         <div class="content">
 			<img src="core/images/logo.png" class="sidebar-logo">
           <ul class="cl-vnavigation">
-			    <li><a href="#/"><i class="fa fa-home"></i> Home</a></li>
-			    <li><a href="#/household/list"><i class="fa fa-folder"></i> Household</a></li>
+			    <li><a href="#/{{Year}}"><i class="fa fa-home"></i> Home</a></li>
+			    <li><a href="#/household/list/{{Year}}"><i class="fa fa-folder"></i> Household</a></li>
 				<li><a href="#/user/list"><i class="fa fa-folder"></i> User List</a></li>
 				<li><a href="#/user/type"><i class="fa fa-folder"></i>  User Type</a></li>
+				<li><a href="#/crime/report/list"><i class="fa fa-folder"></i>  Crime Report</a></li>
 		
 				<li>
 					<a href="#"><i class="fa fa-folder"></i><span>Selection Entry</span></a> 
@@ -37,7 +38,7 @@ if(!isset($_SESSION['isAuthenticated'])){ $isAuthenticated = false; }else{ $isAu
 				<li>
 					<a href="#"><i class="fa fa-folder"></i><span>Census</span></a> 
 					<ul class="sub-menu">						
-						<li><a href="#/census/age"><i class="fa fa-folder"></i> Population by Age </a></li>
+						<li><a href="#/census/age/{{Year}}"><i class="fa fa-folder"></i> Population by Age </a></li>
 						<li><a href="#/census/populationGrowth/{{Year}}"><i class="fa fa-folder"></i> Population by Growth </a></li>
 						<li><a href="#/census/gender/{{Year}}"><i class="fa fa-folder"></i> Population by Gender </a></li>
 						<li><a href="#/census/village/{{Year}}"><i class="fa fa-folder"></i> Population by Village </a></li>

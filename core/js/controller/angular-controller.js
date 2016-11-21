@@ -69,7 +69,14 @@ app.controller('AppChangePasswordModalController', function ( $scope, $http, $q,
 	$scope.user = user;
 });
 
-app.controller('AppLoginController', function ( $scope, $http, $q, $location, svcLogin,$cookieStore,$window ,growl ) {
+app.controller('AppLoginController', function ( $scope, $http, $q, $location, svcLogin,$cookieStore,$window ,growl,svcYear) {
+	$scope.loadYear = function(){
+		svcYear.List('',0,0).then(function(r){
+			$scope.yearList = r.Results;
+			$scope.Year = $scope.yearList[0].Year;
+		})
+	}
+	$scope.loadYear();
 	
 		$scope.formData = {};
 		$scope.login = function(){
@@ -83,7 +90,7 @@ app.controller('AppLoginController', function ( $scope, $http, $q, $location, sv
 						$scope.spinner.active = true;
 						if($scope.session.userData.name != null){
 							growl.success("Access Granted");
-							$location.path('/');
+							$location.path('/'+$scope.Year);
 							$scope.spinner.active = false;
 						}
 					}else{

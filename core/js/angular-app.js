@@ -18,12 +18,6 @@ app.run(function ($rootScope, $location,$cookieStore,$window,svcLogin) {
 app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/login")
     $stateProvider
-	    .state('home',
-        {
-            url: '/',
-            templateUrl: "views/home.html",
-            controller: "",
-        })
         .state('login',
         {
             url: '/login',
@@ -31,7 +25,12 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             controller: "AppLoginController",
         })
 		
-
+	    .state('home',
+        {
+            url: '/:Year',
+            templateUrl: "views/home.html",
+            controller: "AppHomeController",
+        })
 		
 		
 		// household
@@ -43,7 +42,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
 			})
 			.state('household.list',
 			{
-				url: '/list',
+				url: '/list/:Year',
 				templateUrl: "views/household/list.html",
 				controller: "AppHouseholdController",
 			})
@@ -184,7 +183,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
 			})
 			.state('census.age',
 			{
-				url: '/age',
+				url: '/age/:Year',
 				templateUrl: "views/census/age.html",
 				controller: "AppCensusAgeController",
 			})
@@ -195,6 +194,22 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
 				controller: "AppMemberController",
 			})
 		// end census
+		
+		// crime report
+		.state('crimeReport',
+		{
+			url: '/crime/report',
+			templateUrl: "views/crime/index.html",
+			controller: "",
+		})
+		.state('crimeReport.list',
+		{
+			url: '/list',
+			templateUrl: "views/crime/list.html",
+			controller: "CrimeReportController",
+		})
+		
+		// end crime report
 		
 
 }]);

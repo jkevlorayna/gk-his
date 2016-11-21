@@ -1,0 +1,96 @@
+
+			    	<div class="block-flat">
+						<div class="header">		
+							<div class="pull-right"><a href="#/household/list" class="btn btn-arrow-left"><i class="fa fa-arrow-left"></i> Back</a></div>						
+							<h3>{{PageTitle}}</h3>
+						</div>
+						<div class="content">
+
+						<form ng-submit="save()" method="POST">
+<div class="form-inline">
+  <div class="form-group">
+    <label> Household No:</label>
+    <input type="text" class="form-control" ng-model="formData.HouseholdNo" required>
+  </div>
+  <div class="form-group">
+    <label>Village:</label>
+    <input type="text" class="form-control" ng-model="formData.Address" uib-typeahead="Village for Village in SearchVillage($viewValue)" autocomplete="off">
+  </div>
+  <div class="form-group">
+    <label>Livelihood:</label>
+    <select type="text" class="form-control" ng-model="formData.LivelihoodId" ng-options="row.Id as row.Name for row in livelihoodList" required></select>
+  </div>
+  <div class="form-group">
+    <label>Survey Date:</label>	
+	<div class="input-group">
+		<input type="text" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="formData.SurveyDate" is-open="popup1" datepicker-options="dateOptions"  close-text="Close" />
+		<span class="input-group-btn">
+		<button type="button" class="btn btn-default" ng-click="popup1=true"><i class="glyphicon glyphicon-calendar"></i></button>
+		</span>
+	</div>	
+  </div>
+</div>
+			
+						
+
+	<hr>	
+		<div class="form-group">
+					<button type="button" ng-click="addMember()" class="btn btn-primary"><i class="fa fa-plus"></i> Add Household Member</button>
+		</div>
+		
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<td>Name</td>
+					<td>Gender</td>
+					<td>Age</td>
+					<td>Status</td>
+					<td>Employment Status</td>
+					<td>Educational Attainment</td>
+					<td></td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="row in formData.MemberList">
+					<td><input class="form-control" ng-model="row.Name"></td>
+					<td>
+						<select class="form-control" ng-model="row.Gender">
+							<option>Male</option>
+							<option>Female</option>
+						</select>
+					</td>
+					<td>
+						<input class="form-control" ng-model="row.Age">
+					</td>
+					<td>
+						<select class="form-control" ng-model="row.CivilStatus">
+							<option>Single</option>
+							<option>Separated</option>
+							<option>Widow</option>
+						</select>
+					</td>
+					<td>
+						<select class="form-control" ng-model="row.EmploymentStatusId" ng-options="es.Id as es.Name for es in employmentStatusList">
+						</select>
+					</td>
+					<td>
+						<select class="form-control" ng-model="row.EducationalAttainmentId" ng-options="ea.Id as ea.Name for ea in educationalAttainmentList">
+						</select>
+					</td>
+					<td>	
+							<a href="javascript:void(0);" class="btn btn-danger btn-sm" ng-click="openDeleteModal('md',row.Id)">  <i class="fa fa-trash-o"></i> </a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+			<hr>				
+		<div class="text-center">				
+			<button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Save Record</button>
+		</div>
+				</form>	
+</div>
+		
+		
+						</div>
+					</div>

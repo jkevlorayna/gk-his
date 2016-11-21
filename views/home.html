@@ -1,9 +1,149 @@
 
 <div class="block-flat">
+	<div class="header">		
+			<div class="row">
+				<div class="col-md-4">
+						<h3>Census Data</h3>
+				</div>
+				<div class="col-md-8">
+							<form class="form-inline pull-right">
+									<div class="form-group nomargin">
+										<label for="exampleInputName2">Year</label>
+										<select class="form-control" ng-model="Year" ng-options="y.Year as y.Year for y in yearList" ng-change="changeYear()">
+										</select>
+									</div>
+							</form>
+				</div>
+			</div>
+	</div>
 <div class="row">
 	<div class="col-md-12">
-
-	</div>
 	
+		<div class="alert alert-success">Total Number of Household <span class="badge badge-danger">{{HouseHoldCount}}</span> for the year {{Year}} </div>
+	</div>
+
+	<div class="col-md-4">
+		<div class="alert alert-info alert-white-alt2 rounded">
+				<div class="icon"><i class="fa fa-info-circle"></i></div>
+				<strong>Age Group</strong> 
+		 </div>
+
+		<table class="table table-bordered table-condensed">
+			<thead>
+				<tr>
+					<th>Age Group</th>
+					<th>Number</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="row in AgeResults">
+					<td>Age from {{row.AgeGroup}}</td>
+					<td class="text-center">{{row.Number}}</td>
+				<tr>
+			</tbody>
+		</table>	
+		
+				<div class="alert alert-info alert-white-alt2 rounded">
+				<div class="icon"><i class="fa fa-info-circle"></i></div>
+				<strong>Gender</strong> 
+		 </div>
+
+		<table class="table table-bordered table-condensed">
+			<thead>
+				<tr>
+					<th>Gender</th>
+					<th>Number</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="row in GenderResults">
+					<td>{{row.Gender}}</td>
+					<td class="text-center">{{row.Number}}</td>
+				<tr>
+			</tbody>
+		</table>
+		
+	</div>
+
+	<div class="col-md-4">
+		<div class="alert alert-info alert-white-alt2 rounded">
+				<div class="icon"><i class="fa fa-info-circle"></i></div>
+				<strong>Livelihood</strong> 
+		 </div>
+		<table class="table table-bordered table-condensed">
+			<thead>
+				<tr>
+					<th>Livelihood</th>
+					<th>Number</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="row in LivelihoodResults">
+					<td>{{row.Livelihood}}</td>
+					<td class="text-center">{{row.Number}}</td>
+				<tr>
+			</tbody>
+		</table>	
+		
+				<div class="alert alert-info alert-white-alt2 rounded">
+				<div class="icon"><i class="fa fa-info-circle"></i></div>
+				<strong>Village</strong> 
+		 </div>
+		<table class="table table-bordered table-condensed">
+			<thead>
+				<tr>
+					<th>Village</th>
+					<th>Number</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="row in VillageResults">
+					<td>{{row.Village}}</td>
+					<td class="text-center">{{row.Number}}</td>
+				<tr>
+			</tbody>
+		</table>
+		
+	</div>
+
+	<div class="col-md-4">
+		<div class="alert alert-info alert-white-alt2 rounded">
+				<div class="icon"><i class="fa fa-info-circle"></i></div>
+				<strong>Employment Status</strong> 
+		 </div>
+			<table class="table table-bordered table-condensed">
+			<thead>
+				<tr>
+					<th>Employment Status</th>
+					<th>Number</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="row in EmploymentStatusResults">
+					<td>{{row.EmploymentStatus}}</td>
+					<td class="text-center">{{row.Number}}</td>
+				<tr>
+			</tbody>
+		</table>	
+		
+				<div class="alert alert-info alert-white-alt2 rounded">
+				<div class="icon"><i class="fa fa-info-circle"></i></div>
+				<strong>Educational Attainment</strong> 
+		 </div>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Educational Attainment</th>
+					<th>Number</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="row in EducationalAttainmentResults">
+					<td>{{row.EducationalAttainment}}</td>
+					<td class="text-center">{{row.Number}}</td>
+				<tr>
+			</tbody>
+		</table>
+	</div>
 </div>
 </div>
