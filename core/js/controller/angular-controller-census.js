@@ -261,6 +261,50 @@ app.controller('AppCensusEducationalAttainmentController', function ($scope, $ht
 	
 });
 
+app.controller('AppCensusCrimeController', function ($scope, $http, $q, $location,growl,$uibModal,$timeout,svcCensus,svcYear,$stateParams) {
+	$scope.Year = $stateParams.Year;	
+
+	$scope.loadAll = function(){
+				$q.all([svcYear.List('',0,0)]).then(function(r){
+					$scope.yearList = r[0].Results;
+						$scope.DateFrom = moment($scope.Year).startOf('year').format('YYYY-MM-DD');
+						$scope.DateTo = moment($scope.Year).endOf('year').format('YYYY-MM-DD');
+						
+						svcCensus.Crime($scope.DateFrom,$scope.DateTo).then(function(r){
+							$scope.Results = r;
+							$scope.Count = r.length;
+						})
+				})
+	}			
+	$scope.loadAll();
+	
+	$scope.changeYear = function(){		
+			$location.path("/census/crime/"+$scope.Year);
+	}			
+		
+
+				$scope.amChartOptions = $timeout(function(){
+					return {
+						data:$scope.Results,
+						type: "pie",
+						theme: 'light',
+						"valueField": "Number",
+						"titleField": "Crime",
+						"balloon":{
+							"fixedPosition":false
+						},
+						"export": {
+						"enabled": true
+						}
+					}
+				}.bind(this), 1000) // delay chart render by 1 second
+	
+
+
+	
+	
+});
+
 
 app.controller('AppCensusPopulationGrowthController', function ($scope, $http, $q, $location,growl,$uibModal,$timeout,svcCensus,$stateParams,svcYear) {
 

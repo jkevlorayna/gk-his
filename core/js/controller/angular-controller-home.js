@@ -14,7 +14,8 @@ app.controller('AppHomeController', function ($scope, $http, $q, $location,growl
 						svcCensus.Livelihood($scope.DateFrom,$scope.DateTo),
 						svcCensus.Village($scope.DateFrom,$scope.DateTo),
 						svcCensus.EmploymentStatus($scope.DateFrom,$scope.DateTo),
-						svcCensus.EducationalAttainment($scope.DateFrom,$scope.DateTo)
+						svcCensus.EducationalAttainment($scope.DateFrom,$scope.DateTo),
+						svcCensus.Crime($scope.DateFrom,$scope.DateTo)
 						]).then(function(r){
 								$scope.HouseHoldCount = r[0].Count;
 								$scope.AgeResults = r[1];
@@ -23,6 +24,7 @@ app.controller('AppHomeController', function ($scope, $http, $q, $location,growl
 								$scope.VillageResults = r[4];
 								$scope.EmploymentStatusResults = r[5];
 								$scope.EducationalAttainmentResults = r[6];
+								$scope.CrimeResults = r[7];
 						})
 						
 

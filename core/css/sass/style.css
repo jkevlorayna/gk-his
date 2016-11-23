@@ -61,7 +61,19 @@ form .ng-invalid.ng-invalid-required {
   border: none; }
 
 .nomargin {
-  margin: 0px !important; }
+  margin: 0 !important; }
+
+.nomargin-top {
+  margin-top: 0 !important; }
+
+.nomargin-left {
+  margin-left: 0 !important; }
+
+.nomargin-bottom {
+  margin-bottom: 0 !important; }
+
+.nomargin-right {
+  margin-right: 0 !important; }
 
 .counter_number {
   font-size: 69px !important;
@@ -313,7 +325,5 @@ th {
   border-bottom: 0; }
   .login-container .block-flat .header h3 {
     color: #000 !important; }
-.amcharts-main-div a{
-		display:none !important;
-}
+
 /*# sourceMappingURL=style.css.map */

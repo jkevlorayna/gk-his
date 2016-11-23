@@ -19,7 +19,7 @@
 <div class="row">
 	<div class="col-md-12">
 					<div class="pull-right">
-						<a href="#/household/form/0" class="btn btn-success"><i class="fa fa-plus"></i> Add</a>
+						<a href="#/crime/report/{{Year}}/form/0" class="btn btn-success"><i class="fa fa-plus"></i> Add</a>
 					</div>
 					<form ng-submit="load()" class="form-inline filter_form">
 						<div class="input-group">
@@ -33,21 +33,15 @@
 				<table class="table table-bordered table-condensed" ts-wrapper>
 				<thead>
 					<tr>
-						<th ts-criteria="HouseholdNo" ts-default>Household No</th>
-						<th ts-criteria="Address">Address</th>
-						<th ts-criteria="Livelihood">Livelihood</th>
-						<th ts-criteria="SurveyDate|parseDate">Survey Date</th>
+						<th ts-criteria="CrimeDate" ts-default>Date</th>
 						<th style="width:10%;"></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr ng-repeat="row in list" ts-repeat>
-						<td>{{row.HouseholdNo}}</td>
-						<td>{{row.Address}}</td>
-						<td>{{row.Livelihood}}</td>
-						<td>{{row.SurveyDate | date:'MM/dd/yyyy'}}</td>
+						<td>{{row.CrimeDate | date:'MM/dd/yyyy'}}</td>
 						<td>
-							<a class="btn btn-success btn-sm" href="#/household/form/{{row.Id}}">  <i class="fa fa-edit"></i> </a>
+							<a class="btn btn-success btn-sm" href="#/crime/report/{{Year}}/form/{{row.Id}}">  <i class="fa fa-edit"></i> </a>
 							<button class="btn btn-danger btn-sm" ng-click="openDeleteModal('md',row.Id)">  <i class="fa fa-trash-o"></i> </button>
 						</td>
 					</tr>

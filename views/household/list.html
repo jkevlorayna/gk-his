@@ -19,7 +19,7 @@
 <div class="row">
 	<div class="col-md-12">
 					<div class="pull-right">
-						<a href="#/household/form/0" class="btn btn-success"><i class="fa fa-plus"></i> Add</a>
+						<a href="#/household/{{Year}}/form/0" class="btn btn-success"><i class="fa fa-plus"></i> Add</a>
 					</div>
 					<form ng-submit="load()" class="form-inline filter_form">
 						<div class="input-group">
@@ -47,7 +47,7 @@
 						<td>{{row.Livelihood}}</td>
 						<td>{{row.SurveyDate | date:'MM/dd/yyyy'}}</td>
 						<td>
-							<a class="btn btn-success btn-sm" href="#/household/form/{{row.Id}}">  <i class="fa fa-edit"></i> </a>
+							<a class="btn btn-success btn-sm" href="#/household/{{Year}}/form/{{row.Id}}">  <i class="fa fa-edit"></i> </a>
 							<button class="btn btn-danger btn-sm" ng-click="openDeleteModal('md',row.Id)">  <i class="fa fa-trash-o"></i> </button>
 						</td>
 					</tr>

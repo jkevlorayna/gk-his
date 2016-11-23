@@ -1,5 +1,17 @@
 app.factory('svcCensus', function ($rootScope, $http, $q) {
     $this = {
+		 Crime: function (DateFrom,DateTo) {
+            var deferred = $q.defer();
+            $http({
+                method: 'GET',
+                url: BasePath+'/class/census/crime?DateFrom='+DateFrom + '&DateTo='+DateTo
+            }).success(function (data, status) {
+                deferred.resolve(data);
+            }).error(function (data, status) {
+                deferred.reject(data);
+            });
+            return deferred.promise;
+        },
 		 Village: function (DateFrom,DateTo) {
             var deferred = $q.defer();
             $http({

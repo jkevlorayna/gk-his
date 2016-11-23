@@ -1,5 +1,17 @@
 <?php 
 class CensusRepository{
+		function Crime($DateFrom,$DateTo){
+			global $conn;
+			$where = "";
+			if($DateFrom != 'null' && $DateTo != 'null'){
+				$where .= "And CrimeDate BETWEEN '$DateFrom' AND '$DateTo'";
+			}
+				$where .= "And Crime is not NULL";
+			$query = $conn->query("SELECT Crime,COUNT(*) as Number FROM tbl_crime_report
+			LEFT  JOIN tbl_crime_report_crimes ON tbl_crime_report_crimes.CrimeReportId = tbl_crime_report.Id
+			WHERE 1 = 1 $where GROUP BY tbl_crime_report_crimes.Crime");
+			return $query->fetchAll(PDO::FETCH_OBJ);	
+		}
 		function Village($DateFrom,$DateTo){
 			global $conn;
 			$where = "";

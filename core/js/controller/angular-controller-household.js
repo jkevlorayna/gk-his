@@ -66,6 +66,7 @@ app.controller('AppHouseholdModalController', function ($rootScope,$scope, $http
 app.controller('AppHouseholdFormController', function ($scope, $http, $q, $location, svcHouseHold,svcLivelihood,growl,$uibModal,$stateParams,svcEmploymentStatus,svcEducationalAttainment,svcVillage) {
 
 	$scope.Id = $stateParams.Id;
+	$scope.Year = $stateParams.Year;
 	$q.all([svcLivelihood.List('',0,0),svcEmploymentStatus.List('',0,0),svcEducationalAttainment.List('',0,0)]).then(function(r){
 		$scope.livelihoodList = r[0].Results;
 		$scope.employmentStatusList = r[1].Results;

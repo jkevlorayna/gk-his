@@ -21,7 +21,7 @@ if(!isset($_SESSION['isAuthenticated'])){ $isAuthenticated = false; }else{ $isAu
 			    <li><a href="#/household/list/{{Year}}"><i class="fa fa-folder"></i> Household</a></li>
 				<li><a href="#/user/list"><i class="fa fa-folder"></i> User List</a></li>
 				<li><a href="#/user/type"><i class="fa fa-folder"></i>  User Type</a></li>
-				<li><a href="#/crime/report/list"><i class="fa fa-folder"></i>  Crime Report</a></li>
+				<li><a href="#/crime/report/list/{{Year}}"><i class="fa fa-folder"></i>  Crime Report</a></li>
 		
 				<li>
 					<a href="#"><i class="fa fa-folder"></i><span>Selection Entry</span></a> 
@@ -45,6 +45,7 @@ if(!isset($_SESSION['isAuthenticated'])){ $isAuthenticated = false; }else{ $isAu
 						<li><a href="#/census/livelihood/{{Year}}"><i class="fa fa-folder"></i>  Livelihood </a></li>
 						<li><a href="#/census/employmentStatus/{{Year}}"><i class="fa fa-folder"></i> Employment Status </a></li>
 						<li><a href="#/census/educationalAttainment/{{Year}}"><i class="fa fa-folder"></i> Educational Attainment </a></li>
+						<li><a href="#/census/crime/{{Year}}"><i class="fa fa-folder"></i> Crime </a></li>
 						<li><a href="#/census/member"><i class="fa fa-folder"></i> Residence Records </a></li>
 
 					</ul>		

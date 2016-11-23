@@ -2,12 +2,12 @@
 class CrimeReportRepository{
 		function Get($id){
 			global $conn;
-			$query = $conn->query("SELECT * FROM crime_report  WHERE Id = '$id'");
-			return $query->fetch(PDO::FETCH_ASSOC);	
+			$query = $conn->query("SELECT * FROM tbl_crime_report  WHERE Id = '$id'");
+			return $query->fetch(PDO::FETCH_OBJ);	
 		}
 		function Delete($id){
 			global $conn;
-			$query = $conn->prepare("DELETE FROM  crime_report  WHERE Id = '$id'");
+			$query = $conn->prepare("DELETE FROM  tbl_crime_report  WHERE Id = '$id'");
 			$query->execute();	
 		}
 		function DataList($searchText,$pageNo,$pageSize){
@@ -16,8 +16,8 @@ class CrimeReportRepository{
 			$where = "";
 			
 			$limitCondition = $pageNo == 0 && $pageSize == 0 ? '' : 'LIMIT '.$pageNo.','.$pageSize;
-			$query = $conn->query("SELECT * FROM  crime_report WHERE 1 = 1 $where $limitCondition");
-			$count = $searchText != '' ?  $query->rowcount() : $conn->query("SELECT * FROM  crime_report")->rowcount();
+			$query = $conn->query("SELECT * FROM  tbl_crime_report WHERE 1 = 1 $where $limitCondition");
+			$count = $searchText != '' ?  $query->rowcount() : $conn->query("SELECT * FROM  tbl_crime_report")->rowcount();
 			
 			$data = array();
 			$data['Results'] = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -26,12 +26,12 @@ class CrimeReportRepository{
 		}
 		public function Create(){
 			global $conn;
-			$query = $conn->prepare("INSERT INTO crime_report (CrimeDate) VALUES(:CrimeDate)");
+			$query = $conn->prepare("INSERT INTO tbl_crime_report (CrimeDate) VALUES(:CrimeDate)");
 			return $query;	
 		}
 		public function Update(){
 			global $conn;
-			$query = $conn->prepare("UPDATE crime_report SET CrimeDate = :CrimeDate WHERE Id = :Id");
+			$query = $conn->prepare("UPDATE tbl_crime_report SET CrimeDate = :CrimeDate WHERE Id = :Id");
 			return $query;	
 		}
 		public function Transform($POST){
@@ -49,6 +49,9 @@ class CrimeReportRepository{
 			}
 			$query->bindParam(':CrimeDate', $POST->CrimeDate);
 			$query->execute();	
+			
+			if($POST->Id == 0){ $POST->Id = $conn->lastInsertId(); }
+			return 	$POST;
 		}
 }
 ?>

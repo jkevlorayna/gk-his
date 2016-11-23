@@ -1,7 +1,14 @@
 <?php 
 	$slim_app->get('/crimereport/:id',function($id){
 		$CrimeReportRepo = new CrimeReportRepository();
+		$CrimeReportCrimesRepo = new CrimeReportCrimesRepository();
+		$CrimeReportSuspectsRepo = new CrimeReportSuspectsRepository();
+		$CrimeReportVictimsRepo = new CrimeReportVictimsRepository();
+		
 		$result = $CrimeReportRepo->Get($id);
+		$result->Crimes = $CrimeReportCrimesRepo->GetByCrimeReportId($id);
+		$result->Suspects = $CrimeReportSuspectsRepo->GetByCrimeReportId($id);
+		$result->Victims = $CrimeReportVictimsRepo->GetByCrimeReportId($id);
 		echo json_encode($result);
 	});
 	$slim_app->get('/crimereport',function(){
@@ -18,7 +25,24 @@
 		$POST = json_decode($request->getBody());
 			
 		$CrimeReportRepo = new CrimeReportRepository();
+		$CrimeReportCrimesRepo = new CrimeReportCrimesRepository();
+		$CrimeReportSuspectsRepo = new CrimeReportSuspectsRepository();
+		$CrimeReportVictimsRepo = new CrimeReportVictimsRepository();
+		
 		$r = $CrimeReportRepo->Transform($POST);
-		$CrimeReportRepo->Save($r);
+		$oReturn = $CrimeReportRepo->Save($r);
+		
+		foreach($POST->Crimes as  $row){
+			$row->CrimeReportId = $oReturn->Id;
+			$CrimeReportCrimesRepo->Save($CrimeReportCrimesRepo->Transform($row));
+		}
+		foreach($POST->Victims as  $row){
+			$row->CrimeReportId = $oReturn->Id;
+			$CrimeReportVictimsRepo->Save($CrimeReportVictimsRepo->Transform($row));
+		}
+		foreach($POST->Suspects as  $row){
+			$row->CrimeReportId = $oReturn->Id;
+			$CrimeReportSuspectsRepo->Save($CrimeReportSuspectsRepo->Transform($row));
+		}
 	});
 ?>

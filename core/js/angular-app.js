@@ -48,7 +48,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
 			})
 			.state('household.form',
 			{
-				url: '/form/:Id',
+				url: '/:Year/form/:Id',
 				templateUrl: "views/household/form.html",
 				controller: "AppHouseholdFormController",
 			})
@@ -187,6 +187,12 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
 				templateUrl: "views/census/age.html",
 				controller: "AppCensusAgeController",
 			})
+			.state('census.crime',
+			{
+				url: '/crime/:Year',
+				templateUrl: "views/census/crime.html",
+				controller: "AppCensusCrimeController",
+			})
 			.state('census.member',
 			{
 				url: '/member',
@@ -204,11 +210,16 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
 		})
 		.state('crimeReport.list',
 		{
-			url: '/list',
+			url: '/list/:Year',
 			templateUrl: "views/crime/list.html",
 			controller: "CrimeReportController",
 		})
-		
+		.state('crimeReport.form',
+		{
+			url: '/:Year/form/:Id',
+			templateUrl: "views/crime/form.html",
+			controller: "CrimeReportFormController",
+		})
 		// end crime report
 		
 

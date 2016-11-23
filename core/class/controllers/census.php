@@ -1,4 +1,9 @@
 <?php 
+	$slim_app->get('/census/crime',function(){
+		$CensusRepo = new CensusRepository();
+		$result = $CensusRepo->Crime($_GET['DateFrom'],$_GET['DateTo']);
+		echo json_encode($result);
+	});
 	$slim_app->get('/census/village',function(){
 		$CensusRepo = new CensusRepository();
 		$result = $CensusRepo->Village($_GET['DateFrom'],$_GET['DateTo']);
