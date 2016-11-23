@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 22, 2016 at 11:19 AM
+-- Generation Time: Nov 23, 2016 at 11:28 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -41,6 +41,115 @@ INSERT INTO `tbl_category` (`Id`, `category_name`, `category_desc`) VALUES
 (25, 'Resorts', '0'),
 (26, 'Beach', '0'),
 (27, 'Restuarant', '0');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_crime`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_crime` (
+`Id` int(11) NOT NULL,
+  `Name` varchar(100) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_crime`
+--
+
+INSERT INTO `tbl_crime` (`Id`, `Name`) VALUES
+(1, 'Murder'),
+(2, 'Rape'),
+(3, 'stealing');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_crime_report`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_crime_report` (
+`Id` int(11) NOT NULL,
+  `CrimeDate` date NOT NULL,
+  `CrimeTime` time NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_crime_report`
+--
+
+INSERT INTO `tbl_crime_report` (`Id`, `CrimeDate`, `CrimeTime`) VALUES
+(1, '2016-11-08', '00:00:00'),
+(2, '2016-11-20', '00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_crime_report_crimes`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_crime_report_crimes` (
+`Id` int(11) NOT NULL,
+  `CrimeReportId` int(11) NOT NULL,
+  `Crime` varchar(100) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_crime_report_crimes`
+--
+
+INSERT INTO `tbl_crime_report_crimes` (`Id`, `CrimeReportId`, `Crime`) VALUES
+(3, 2, 'Rape'),
+(4, 2, 'stealing'),
+(5, 1, 'Murder'),
+(6, 1, 'Murder'),
+(7, 1, 'Rape');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_crime_report_suspects`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_crime_report_suspects` (
+`Id` int(11) NOT NULL,
+  `CrimeReportId` int(11) NOT NULL,
+  `Name` varchar(100) NOT NULL,
+  `Age` int(11) NOT NULL,
+  `Address` varchar(100) NOT NULL,
+  `Gender` varchar(50) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_crime_report_suspects`
+--
+
+INSERT INTO `tbl_crime_report_suspects` (`Id`, `CrimeReportId`, `Name`, `Age`, `Address`, `Gender`) VALUES
+(1, 2, 'Suspect 1', 0, '', 'Male'),
+(2, 2, 'Suspect 2', 0, '', 'Female');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_crime_report_victims`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_crime_report_victims` (
+`Id` int(11) NOT NULL,
+  `CrimeReportId` int(11) NOT NULL,
+  `Name` varchar(100) NOT NULL,
+  `Age` int(11) NOT NULL,
+  `Address` varchar(100) NOT NULL,
+  `Gender` varchar(50) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_crime_report_victims`
+--
+
+INSERT INTO `tbl_crime_report_victims` (`Id`, `CrimeReportId`, `Name`, `Age`, `Address`, `Gender`) VALUES
+(1, 2, 'Victim 1', 10, 'Bacolod City', 'Male'),
+(2, 2, 'Victim 2', 22, 'Bacolod City', 'Female');
 
 -- --------------------------------------------------------
 
@@ -117,16 +226,16 @@ CREATE TABLE IF NOT EXISTS `tbl_household` (
 --
 
 INSERT INTO `tbl_household` (`Id`, `HouseholdNo`, `SurveyDate`, `Address`, `LivelihoodId`) VALUES
-(12, '123', '2015-09-04', 'bago city', 1),
-(13, '456', '2016-10-16', 'bago city', 1),
-(15, '455', '2016-10-16', 'ads', 2),
-(16, 'sads', '2016-10-17', 'das', 3),
-(17, '4233', '2016-10-16', 'dasdasd', 2),
-(19, '2014 -test', '2014-10-16', 'test', 1),
+(12, '123', '2015-09-04', 'Village 1', 1),
+(13, '456', '2016-10-16', 'Village 1', 1),
+(15, '455', '2016-10-16', 'Village 1', 2),
+(16, 'sads', '2016-10-17', 'Village 2', 3),
+(17, '4233', '2016-10-16', 'Village 3', 2),
+(19, '2014 -test', '2014-10-16', 'Village 3', 1),
 (20, '2013', '2013-10-16', 'dasd', 1),
-(21, 'dasd', '2012-10-16', 'das', 2),
-(22, 'dasd', '2011-10-16', 'das', 2),
-(23, 'dasd', '2010-10-16', 'das', 2);
+(21, 'dasd', '2012-10-16', 'Village 1', 2),
+(22, 'dasd', '2011-10-16', 'Village 1', 2),
+(23, 'dasd', '2010-10-16', 'Village 1', 2);
 
 -- --------------------------------------------------------
 
@@ -163,22 +272,19 @@ CREATE TABLE IF NOT EXISTS `tbl_member` (
   `HouseholdId` int(11) NOT NULL,
   `EmploymentStatusId` int(11) NOT NULL,
   `EducationalAttainmentId` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_member`
 --
 
 INSERT INTO `tbl_member` (`Id`, `Name`, `Gender`, `Age`, `CivilStatus`, `HouseholdId`, `EmploymentStatusId`, `EducationalAttainmentId`) VALUES
-(47, 'test 166', 'Male', 1, 'single', 12, 1, 2),
+(47, 'test 166', 'Male', 25, 'Separated', 12, 1, 2),
 (50, 'john kevin', 'Male', 22, 'Single', 13, 1, 2),
 (51, 'member 2', 'Male', 22, 'Separated', 13, 1, 3),
 (53, 'test 123', 'Female', 22, 'Single', 12, 1, 3),
 (54, 'test 123', 'Female', 22, 'Single', 12, 1, 3),
-(55, 'asd', 'Female', 56, 'Single', 12, 1, 3),
-(56, 'test 123', 'Female', 22, 'Single', 12, 1, 3),
-(57, 'asd', 'Female', 56, 'Single', 12, 1, 3),
-(58, 'test', '', 89, 'Separated', 12, 0, 0),
+(55, 'asd', 'Female', 56, 'Separated', 12, 1, 3),
 (59, 'adasd', 'Male', 55, 'Single', 16, 1, 3),
 (60, 'test 1', 'Male', 22, 'Single', 19, 1, 3),
 (61, 'test 2', 'Female', 22, 'Single', 19, 2, 3),
@@ -192,15 +298,7 @@ INSERT INTO `tbl_member` (`Id`, `Name`, `Gender`, `Age`, `CivilStatus`, `Househo
 (69, 'asd', 'Female', 23, 'Separated', 22, 1, 3),
 (70, 'das', 'Female', 23, 'Separated', 23, 2, 3),
 (71, 'asd', 'Female', 23, 'Separated', 23, 1, 3),
-(72, '', '', 0, '', 12, 0, 0),
-(73, '', '', 0, '', 12, 0, 0),
-(74, '', '', 0, '', 12, 0, 0),
-(75, '', '', 0, '', 12, 0, 0),
-(76, '', '', 0, '', 12, 0, 0),
-(77, '', '', 0, '', 12, 0, 0),
-(78, '', '', 0, '', 12, 0, 0),
-(79, '', '', 0, '', 12, 0, 0),
-(80, '', '', 0, '', 12, 0, 0);
+(81, '', 'Female', 0, 'Single', 20, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -305,7 +403,7 @@ CREATE TABLE IF NOT EXISTS `tbl_user_roles` (
 CREATE TABLE IF NOT EXISTS `tbl_user_type` (
 `Id` int(11) NOT NULL,
   `user_type` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_user_type`
@@ -364,6 +462,36 @@ INSERT INTO `tbl_year` (`Id`, `Year`) VALUES
 -- Indexes for table `tbl_category`
 --
 ALTER TABLE `tbl_category`
+ ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `tbl_crime`
+--
+ALTER TABLE `tbl_crime`
+ ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `tbl_crime_report`
+--
+ALTER TABLE `tbl_crime_report`
+ ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `tbl_crime_report_crimes`
+--
+ALTER TABLE `tbl_crime_report_crimes`
+ ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `tbl_crime_report_suspects`
+--
+ALTER TABLE `tbl_crime_report_suspects`
+ ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `tbl_crime_report_victims`
+--
+ALTER TABLE `tbl_crime_report_victims`
  ADD PRIMARY KEY (`Id`);
 
 --
@@ -460,6 +588,31 @@ ALTER TABLE `tbl_year`
 ALTER TABLE `tbl_category`
 MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
 --
+-- AUTO_INCREMENT for table `tbl_crime`
+--
+ALTER TABLE `tbl_crime`
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `tbl_crime_report`
+--
+ALTER TABLE `tbl_crime_report`
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `tbl_crime_report_crimes`
+--
+ALTER TABLE `tbl_crime_report_crimes`
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `tbl_crime_report_suspects`
+--
+ALTER TABLE `tbl_crime_report_suspects`
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `tbl_crime_report_victims`
+--
+ALTER TABLE `tbl_crime_report_victims`
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `tbl_diagnosis`
 --
 ALTER TABLE `tbl_diagnosis`
@@ -488,7 +641,7 @@ MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT for table `tbl_member`
 --
 ALTER TABLE `tbl_member`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=81;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=82;
 --
 -- AUTO_INCREMENT for table `tbl_roles`
 --
@@ -518,7 +671,7 @@ MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `tbl_user_type`
 --
 ALTER TABLE `tbl_user_type`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `tbl_village`
 --
