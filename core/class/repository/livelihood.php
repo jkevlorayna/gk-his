@@ -53,6 +53,9 @@ class LivelihoodRepository{
 			}
 			$query->bindParam(':Name', $POST->Name);
 			$query->execute();	
+			
+			if($POST->Id == 0){ $POST->Id = $conn->lastInsertId(); }
+			return 	$POST;			
 		}
 }
 

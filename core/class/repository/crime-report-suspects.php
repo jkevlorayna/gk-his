@@ -62,6 +62,9 @@ class CrimeReportSuspectsRepository{
 			$query->bindParam(':Address', $POST->Address);
 			$query->bindParam(':Gender', $POST->Gender);
 			$query->execute();	
+			
+			if($POST->Id == 0){ $POST->Id = $conn->lastInsertId(); }
+			return 	$POST;			
 		}
 }
 ?>

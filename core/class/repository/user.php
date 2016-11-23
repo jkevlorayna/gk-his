@@ -60,6 +60,9 @@ class UserRepository{
 			$query->bindParam(':password',$POST->password);
 			$query->bindParam(':UserTypeId',$POST->UserTypeId);
 			$query->execute();	
+			
+			if($POST->Id == 0){ $POST->Id = $conn->lastInsertId(); }
+			return 	$POST;			
 		}
 }
 
@@ -114,6 +117,9 @@ class UserTypeRepository{
 			
 			$query->bindParam(':user_type',$POST->user_type);
 			$query->execute();	
+			
+			if($POST->Id == 0){ $POST->Id = $conn->lastInsertId(); }
+			return 	$POST;
 		}
 }
 
@@ -189,6 +195,9 @@ class UserRoleRepository{
 			$query->bindParam(':UserId',$POST->UserId);
 			$query->bindParam(':RoleId',$POST->RoleId);
 			$query->execute();	
+			
+			if($POST->Id == 0){ $POST->Id = $conn->lastInsertId(); }
+			return 	$POST;
 		}
 }		
 $GLOBALS['UserRoleRepo'] = new UserRoleRepository();	

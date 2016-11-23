@@ -49,6 +49,9 @@ class StatusRepository{
 			
 			$query->bindParam(':Status', !isset($POST->Status) ? '' : $POST->Status);
 			$query->execute();	
+			
+			if($POST->Id == 0){ $POST->Id = $conn->lastInsertId(); }
+			return 	$POST;					
 		}
 }
 

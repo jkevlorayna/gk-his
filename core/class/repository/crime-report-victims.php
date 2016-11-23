@@ -61,7 +61,10 @@ class CrimeReportVictimsRepository{
 			$query->bindParam(':Age', $POST->Age);
 			$query->bindParam(':Address', $POST->Address);
 			$query->bindParam(':Gender', $POST->Gender);
-			$query->execute();	
+			$query->execute();
+
+			if($POST->Id == 0){ $POST->Id = $conn->lastInsertId(); }
+			return 	$POST;			
 		}
 }
 ?>

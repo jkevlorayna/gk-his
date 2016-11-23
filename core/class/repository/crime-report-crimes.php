@@ -56,6 +56,9 @@ class CrimeReportCrimesRepository{
 			$query->bindParam(':CrimeReportId', $POST->CrimeReportId);
 			$query->bindParam(':Crime', $POST->Crime);
 			$query->execute();	
+			
+			if($POST->Id == 0){ $POST->Id = $conn->lastInsertId(); }
+			return 	$POST;
 		}
 }
 ?>

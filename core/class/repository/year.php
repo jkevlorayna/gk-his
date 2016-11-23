@@ -53,6 +53,9 @@ class YearRepository{
 			}
 			$query->bindParam(':Year', $POST->Year);
 			$query->execute();	
+			
+			if($POST->Id == 0){ $POST->Id = $conn->lastInsertId(); }
+			return 	$POST;
 		}
 }
 
