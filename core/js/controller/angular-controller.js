@@ -90,7 +90,8 @@ app.controller('AppLoginController', function ( $scope, $http, $q, $location, sv
 						$scope.spinner.active = true;
 						if($scope.session.userData.name != null){
 							growl.success("Access Granted");
-							$location.path('/'+$scope.Year);
+							$location.path('/home/'+$scope.Year);
+							console.log("123");
 							$scope.spinner.active = false;
 						}
 					}else{

@@ -33,7 +33,7 @@ app.controller('AppHomeController', function ($scope, $http, $q, $location,growl
 	$scope.loadAll();
 	
 	$scope.changeYear = function(){		
-			$location.path("/"+$scope.Year);
+			$location.path("home/"+$scope.Year);
 	}			
 		
 

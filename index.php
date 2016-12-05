@@ -17,7 +17,7 @@ if(!isset($_SESSION['isAuthenticated'])){ $isAuthenticated = false; }else{ $isAu
         <div class="content">
 			<img src="core/images/logo.png" class="sidebar-logo">
           <ul class="cl-vnavigation">
-			    <li><a href="#/{{Year}}"><i class="fa fa-home"></i> Home</a></li>
+			    <li><a href="#/home/{{Year}}"><i class="fa fa-home"></i> Home</a></li>
 			    <li><a href="#/household/list/{{Year}}"><i class="fa fa-folder"></i> Household</a></li>
 				<li><a href="#/user/list"><i class="fa fa-folder"></i> User List</a></li>
 				<li><a href="#/user/type"><i class="fa fa-folder"></i>  User Type</a></li>
