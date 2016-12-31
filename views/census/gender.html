@@ -20,15 +20,7 @@
 		</div>
 	</div>
 	<div id="printDiv">
-	<div class="col-md-8">
-		<div class="text-center visible-print-block reportHeader">
-			<h2>Population By Gender for the Year {{Year}}</h2>
-		</div>
-		<div  style="height: 400px; width: 100%;">
-		<am-chart id="myFirstChart" options="amChartOptions"></am-chart>
-		</div>
-	</div>
-	<div class="col-md-4">
+		<div class="col-md-4">
 		<a href="" ng-click="PrintReport('printDiv')" class="btn btn-info pull-right print-btn"><i class="fa fa-print"></i> Print Report</a>
 		<table class="table table-bordered">
 			<thead>
@@ -45,6 +37,15 @@
 			</tbody>
 		</table>	
 	</div>
+	<div class="col-md-8">
+		<div class="text-center visible-print-block reportHeader">
+			<h2>Population By Gender for the Year {{Year}}</h2>
+		</div>
+		<div  style="height: 400px; width: 100%;">
+		<am-chart id="myFirstChart" options="amChartOptions"></am-chart>
+		</div>
+	</div>
+
 	</div>
 </div>
 </div>

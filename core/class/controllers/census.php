@@ -6,27 +6,27 @@
 	});
 	$slim_app->get('/census/village',function(){
 		$CensusRepo = new CensusRepository();
-		$result = $CensusRepo->Village($_GET['DateFrom'],$_GET['DateTo']);
+		$result = $CensusRepo->Village($_GET['DateFrom'],$_GET['DateTo'],$_GET['Village']);
 		echo json_encode($result);
 	});
 	$slim_app->get('/census/livelihood',function(){
 		$CensusRepo = new CensusRepository();
-		$result = $CensusRepo->Livelihood($_GET['DateFrom'],$_GET['DateTo']);
+		$result = $CensusRepo->Livelihood($_GET['DateFrom'],$_GET['DateTo'],$_GET['Village']);
 		echo json_encode($result);
 	});
 	$slim_app->get('/census/gender',function(){
 		$CensusRepo = new CensusRepository();
-		$result = $CensusRepo->Gender($_GET['DateFrom'],$_GET['DateTo']);
+		$result = $CensusRepo->Gender($_GET['DateFrom'],$_GET['DateTo'],$_GET['Village']);
 		echo json_encode($result);
 	});
 	$slim_app->get('/census/employmentStatus',function(){
 		$CensusRepo = new CensusRepository();
-		$result = $CensusRepo->EmploymentStatus($_GET['DateFrom'],$_GET['DateTo']);
+		$result = $CensusRepo->EmploymentStatus($_GET['DateFrom'],$_GET['DateTo'],$_GET['Village']);
 		echo json_encode($result);
 	});
 	$slim_app->get('/census/educationalAttainment',function(){
 		$CensusRepo = new CensusRepository();
-		$result = $CensusRepo->EducationalAttainment($_GET['DateFrom'],$_GET['DateTo']);
+		$result = $CensusRepo->EducationalAttainment($_GET['DateFrom'],$_GET['DateTo'],$_GET['Village']);
 		echo json_encode($result);
 	});
 	$slim_app->get('/census/populationGrowth',function(){

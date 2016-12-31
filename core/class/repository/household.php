@@ -10,7 +10,7 @@ class HouseholdRepository{
 			$query = $conn->prepare("DELETE FROM  tbl_household  WHERE Id = '$id'");
 			$query->execute();	
 		}
-		function DataList($searchText,$pageNo,$pageSize,$DateFrom,$DateTo){
+		function DataList($searchText,$pageNo,$pageSize,$DateFrom,$DateTo,$Village){
 			global $conn;
 			$pageNo = ($pageNo - 1) * $pageSize; 
 			
@@ -22,6 +22,10 @@ class HouseholdRepository{
 			if($DateFrom != 'null' && $DateTo != 'null'){
 				$where .= "And SurveyDate BETWEEN '$DateFrom' AND '$DateTo'";
 				$whereCount .= "And SurveyDate BETWEEN '$DateFrom' AND '$DateTo'";
+			}
+			if($Village != 'null'){
+				$where .= "And Address = '$Village'";
+				$whereCount .= "And Address = '$Village'";
 			}
 			
 			$limitCondition = $pageNo == 0 && $pageSize == 0 ? '' : 'LIMIT '.$pageNo.','.$pageSize;

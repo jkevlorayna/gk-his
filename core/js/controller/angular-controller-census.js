@@ -51,7 +51,7 @@ app.controller('AppCensusVillageController', function ($scope, $http, $q, $locat
 						$scope.DateFrom = moment($scope.Year).startOf('year').format('YYYY-MM-DD');
 						$scope.DateTo = moment($scope.Year).endOf('year').format('YYYY-MM-DD');
 						
-						svcCensus.Village($scope.DateFrom,$scope.DateTo).then(function(r){
+						svcCensus.Village($scope.DateFrom,$scope.DateTo,'null').then(function(r){
 							$scope.Results = r;
 							$scope.Count = r.length;
 						})
@@ -95,7 +95,7 @@ app.controller('AppCensusLivelihoodController', function ($scope, $http, $q, $lo
 						$scope.DateFrom = moment($scope.Year).startOf('year').format('YYYY-MM-DD');
 						$scope.DateTo = moment($scope.Year).endOf('year').format('YYYY-MM-DD');
 						
-						svcCensus.Livelihood($scope.DateFrom,$scope.DateTo).then(function(r){
+						svcCensus.Livelihood($scope.DateFrom,$scope.DateTo,'null').then(function(r){
 							$scope.Results = r;
 							$scope.Count = r.length;
 						})
@@ -141,7 +141,7 @@ app.controller('AppCensusGenderController', function ($scope, $http, $q, $locati
 						$scope.DateFrom = moment($scope.Year).startOf('year').format('YYYY-MM-DD');
 						$scope.DateTo = moment($scope.Year).endOf('year').format('YYYY-MM-DD');
 						
-						svcCensus.Gender($scope.DateFrom,$scope.DateTo).then(function(r){
+						svcCensus.Gender($scope.DateFrom,$scope.DateTo,'null').then(function(r){
 							$scope.Results = r;
 							$scope.Count = r.length;
 						})
@@ -185,7 +185,7 @@ app.controller('AppCensusEmploymentStatusController', function ($scope, $http, $
 						$scope.DateFrom = moment($scope.Year).startOf('year').format('YYYY-MM-DD');
 						$scope.DateTo = moment($scope.Year).endOf('year').format('YYYY-MM-DD');
 						
-						svcCensus.EmploymentStatus($scope.DateFrom,$scope.DateTo).then(function(r){
+						svcCensus.EmploymentStatus($scope.DateFrom,$scope.DateTo,'null').then(function(r){
 							$scope.Results = r;
 							$scope.Count = r.length;
 						})
@@ -230,7 +230,7 @@ app.controller('AppCensusEducationalAttainmentController', function ($scope, $ht
 						$scope.DateFrom = moment($scope.Year).startOf('year').format('YYYY-MM-DD');
 						$scope.DateTo = moment($scope.Year).endOf('year').format('YYYY-MM-DD');
 						
-						svcCensus.EducationalAttainment($scope.DateFrom,$scope.DateTo).then(function(r){
+						svcCensus.EducationalAttainment($scope.DateFrom,$scope.DateTo,'null').then(function(r){
 							$scope.Results = r;
 							$scope.Count = r.length;
 						})

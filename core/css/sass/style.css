@@ -326,4 +326,7 @@ th {
   .login-container .block-flat .header h3 {
     color: #000 !important; }
 
+.amcharts-chart-div a, .amcharts-main-div a {
+  display: none !important; }
+
 /*# sourceMappingURL=style.css.map */

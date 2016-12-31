@@ -6,6 +6,7 @@
 <div class="row">
 
 	<div class="col-md-12">
+			<a href="" ng-click="PrintReport('printDiv')" class="btn btn-info pull-right print-btn"><i class="fa fa-print"></i> Print Report</a>
 			<form class="form-inline">
 					<div class="form-group">
 						<label for="exampleInputName2">Year</label>
@@ -13,6 +14,7 @@
 						</select>
 					</div>
 			</form>
+			<hr>
 	</div>
 	<div class="col-md-12" ng-if="Count <= 0">
 		<br>
@@ -21,16 +23,8 @@
 		</div>
 	</div>
 	<div id="printDiv">
-	<div class="col-md-8">
-		<div class="text-center visible-print-block reportHeader">
-			<h2>Crime Report for Year the {{Year}}</h2>
-		</div>
-		<div  style="height: 400px; width: 100%;">
-		<am-chart id="myFirstChart" options="amChartOptions"></am-chart>
-		</div>
-	</div>
-	<div class="col-md-4">
-		<a href="" ng-click="PrintReport('printDiv')" class="btn btn-info pull-right print-btn"><i class="fa fa-print"></i> Print Report</a>
+		<div class="col-md-4">
+		
 		<table class="table table-bordered">
 			<thead>
 				<tr>
@@ -46,6 +40,15 @@
 			</tbody>
 		</table>	
 	</div>
+	<div class="col-md-8">
+		<div class="text-center visible-print-block reportHeader">
+			<h2>Crime Report for Year the {{Year}}</h2>
+		</div>
+		<div  style="height: 400px; width: 100%;">
+		<am-chart id="myFirstChart" options="amChartOptions"></am-chart>
+		</div>
+	</div>
+
 	</div>
 	
 	

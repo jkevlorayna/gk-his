@@ -12,11 +12,11 @@ app.factory('svcCensus', function ($rootScope, $http, $q) {
             });
             return deferred.promise;
         },
-		 Village: function (DateFrom,DateTo) {
+		 Village: function (DateFrom,DateTo,Village) {
             var deferred = $q.defer();
             $http({
                 method: 'GET',
-                url: BasePath+'/class/census/village?DateFrom='+DateFrom + '&DateTo='+DateTo
+                url: BasePath+'/class/census/village?DateFrom='+DateFrom + '&DateTo='+DateTo + '&Village='+Village
             }).success(function (data, status) {
                 deferred.resolve(data);
             }).error(function (data, status) {
@@ -24,11 +24,11 @@ app.factory('svcCensus', function ($rootScope, $http, $q) {
             });
             return deferred.promise;
         },
-        Livelihood: function (DateFrom,DateTo) {
+        Livelihood: function (DateFrom,DateTo,Village) {
             var deferred = $q.defer();
             $http({
                 method: 'GET',
-                url: BasePath+'/class/census/livelihood?DateFrom='+DateFrom + '&DateTo='+DateTo
+                url: BasePath+'/class/census/livelihood?DateFrom='+DateFrom + '&DateTo='+DateTo + '&Village='+Village
             }).success(function (data, status) {
                 deferred.resolve(data);
             }).error(function (data, status) {
@@ -36,11 +36,11 @@ app.factory('svcCensus', function ($rootScope, $http, $q) {
             });
             return deferred.promise;
         },
-		Gender: function (DateFrom,DateTo) {
+		Gender: function (DateFrom,DateTo,Village) {
             var deferred = $q.defer();
             $http({
                 method: 'GET',
-                url: BasePath+'/class/census/gender?DateFrom='+DateFrom + '&DateTo='+DateTo
+                url: BasePath+'/class/census/gender?DateFrom='+DateFrom + '&DateTo='+DateTo + '&Village='+Village
             }).success(function (data, status) {
                 deferred.resolve(data);
             }).error(function (data, status) {
@@ -48,22 +48,22 @@ app.factory('svcCensus', function ($rootScope, $http, $q) {
             });
             return deferred.promise;
         },
-		EmploymentStatus: function (DateFrom,DateTo) {
+		EmploymentStatus: function (DateFrom,DateTo,Village) {
             var deferred = $q.defer();
             $http({
                 method: 'GET',
-                url: BasePath+'/class/census/employmentStatus?DateFrom='+DateFrom + '&DateTo='+DateTo
+                url: BasePath+'/class/census/employmentStatus?DateFrom='+DateFrom + '&DateTo='+DateTo + '&Village='+Village
             }).success(function (data, status) {
                 deferred.resolve(data);
             }).error(function (data, status) {
                 deferred.reject(data);
             });
             return deferred.promise;
-        },EducationalAttainment: function (DateFrom,DateTo) {
+        },EducationalAttainment: function (DateFrom,DateTo,Village) {
             var deferred = $q.defer();
             $http({
                 method: 'GET',
-                url: BasePath+'/class/census/educationalAttainment?DateFrom='+DateFrom + '&DateTo='+DateTo
+                url: BasePath+'/class/census/educationalAttainment?DateFrom='+DateFrom + '&DateTo='+DateTo + '&Village='+Village
             }).success(function (data, status) {
                 deferred.resolve(data);
             }).error(function (data, status) {

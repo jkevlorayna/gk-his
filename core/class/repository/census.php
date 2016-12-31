@@ -12,46 +12,56 @@ class CensusRepository{
 			WHERE 1 = 1 $where GROUP BY tbl_crime_report_crimes.Crime");
 			return $query->fetchAll(PDO::FETCH_OBJ);	
 		}
-		function Village($DateFrom,$DateTo){
+		function Village($DateFrom,$DateTo,$Village){
 			global $conn;
 			$where = "";
 			if($DateFrom != 'null' && $DateTo != 'null'){
-				$where = "And SurveyDate BETWEEN '$DateFrom' AND '$DateTo'";
+				$where .= "And SurveyDate BETWEEN '$DateFrom' AND '$DateTo'";
 			}
-			
+			if($Village != 'null'){
+				$where .= "And Address = '$Village'";		
+			}
 			$query = $conn->query("SELECT Address as Village,COUNT(*) as Number FROM tbl_household
 			WHERE 1 = 1 $where GROUP BY tbl_household.Address");
 			return $query->fetchAll(PDO::FETCH_OBJ);	
 		}
-		function Livelihood($DateFrom,$DateTo){
+		function Livelihood($DateFrom,$DateTo,$Village){
 			global $conn;
 			$where = "";
 			if($DateFrom != 'null' && $DateTo != 'null'){
-				$where = "And SurveyDate BETWEEN '$DateFrom' AND '$DateTo'";
+				$where .= "And SurveyDate BETWEEN '$DateFrom' AND '$DateTo'";
 			}
-			
+			if($Village != 'null'){
+				$where .= "And Address = '$Village'";		
+			}
 			$query = $conn->query("SELECT tbl_livelihood.Name as Livelihood,COUNT(*) as Number FROM tbl_household
 			LEFT JOIN tbl_livelihood On tbl_household.LivelihoodId = tbl_livelihood.Id
 			WHERE 1 = 1 $where GROUP BY tbl_household.LivelihoodId");
 			return $query->fetchAll(PDO::FETCH_OBJ);	
 		}
-		function Gender($DateFrom,$DateTo){
+		function Gender($DateFrom,$DateTo,$Village){
 			global $conn;
 			$where = "";
 			if($DateFrom != 'null' && $DateTo != 'null'){
 				$where .= "And SurveyDate BETWEEN '$DateFrom' AND '$DateTo'";
 			}
-				$where .= "And Gender != ''"; 
+			if($Village != 'null'){
+				$where .= "And Address = '$Village'";		
+			}
+			$where .= "And Gender != ''"; 
 			$query = $conn->query("SELECT Gender,COUNT(*) as Number FROM tbl_member
 			LEFT JOIN tbl_household ON tbl_household.Id = tbl_member.HouseholdId
 			WHERE 1 = 1 $where GROUP BY Gender");
 			return $query->fetchAll(PDO::FETCH_OBJ);	
 		}
-		function EmploymentStatus($DateFrom,$DateTo){
+		function EmploymentStatus($DateFrom,$DateTo,$Village){
 			global $conn;
 			$where = "";
 			if($DateFrom != 'null' && $DateTo != 'null'){
 				$where .= "And SurveyDate BETWEEN '$DateFrom' AND '$DateTo'";
+			}
+			if($Village != 'null'){
+				$where .= "And Address = '$Village'";		
 			}
 			$where .= "And tbl_member.EmploymentStatusId != '0'";
 			
@@ -62,11 +72,14 @@ class CensusRepository{
 			return $query->fetchAll(PDO::FETCH_OBJ);	
 		}
 		
-		function EducationalAttainment($DateFrom,$DateTo){
+		function EducationalAttainment($DateFrom,$DateTo,$Village){
 			global $conn;
 			$where = "";
 			if($DateFrom != 'null' && $DateTo != 'null'){
 				$where .= "And SurveyDate BETWEEN '$DateFrom' AND '$DateTo'";
+			}
+			if($Village != 'null'){
+				$where .= "And Address = '$Village'";		
 			}
 			$where .= "And tbl_member.EducationalAttainmentId != '0'";
 			

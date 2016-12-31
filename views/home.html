@@ -12,6 +12,12 @@
 										<select class="form-control" ng-model="Year" ng-options="y.Year as y.Year for y in yearList" ng-change="changeYear()">
 										</select>
 									</div>
+									<div class="form-group nomargin">
+										<label for="exampleInputName2">Village</label>
+										<select class="form-control" ng-model="Village" ng-options="v.Name as v.Name for v in VillageList" ng-change="changeVillage()">
+											<option></option>
+										</select>
+									</div>
 							</form>
 				</div>
 			</div>
@@ -19,7 +25,7 @@
 <div class="row">
 	<div class="col-md-12">
 	
-		<div class="alert alert-success">Total Number of Household <span class="badge badge-danger">{{HouseHoldCount}}</span> for the year {{Year}} </div>
+		<div class="alert alert-success">Total Number of Household <span class="badge badge-danger">{{HouseHoldCount}}</span> for the year {{Year}} <span ng-show="Village != 'null'">, {{Village}}</span></div>
 	</div>
 
 	<div class="col-md-4">

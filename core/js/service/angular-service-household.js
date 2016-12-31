@@ -1,10 +1,10 @@
 app.factory('svcHouseHold', function ($rootScope, $http, $q) {
     $this = {
-        List: function (searchText,pageNo,pageSize,DateFrom,DateTo) {
+        List: function (searchText,pageNo,pageSize,DateFrom,DateTo,Village) {
             var deferred = $q.defer();
             $http({
                 method: 'GET',
-                url: BasePath+'/class/household?searchText='+searchText+'&pageNo='+pageNo+'&pageSize='+pageSize+'&DateFrom='+DateFrom + '&DateTo='+DateTo
+                url: BasePath+'/class/household?searchText='+searchText+'&pageNo='+pageNo+'&pageSize='+pageSize+'&DateFrom='+DateFrom + '&DateTo='+DateTo + '&Village='+Village
             }).success(function (data, status) {
                 deferred.resolve(data);
             }).error(function (data, status) {
