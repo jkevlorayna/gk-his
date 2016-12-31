@@ -14,7 +14,7 @@ app.controller('AppHouseholdController', function ($scope, $http, $q, $location,
 						$scope.DateFrom = moment($scope.Year).startOf('year').format('YYYY-MM-DD');
 						$scope.DateTo = moment($scope.Year).endOf('year').format('YYYY-MM-DD');
 						
-						svcHouseHold.List($scope.searchText,$scope.pageNo,$scope.pageSize,$scope.DateFrom,$scope.DateTo).then(function (r) {
+						svcHouseHold.List($scope.searchText,$scope.pageNo,$scope.pageSize,$scope.DateFrom,$scope.DateTo,'null').then(function (r) {
 							$scope.list = r.Results;
 							$scope.count = r.Count;
 						})
