@@ -118,7 +118,7 @@ class CensusRepository{
 						   WHEN age BETWEEN 30 and 39 THEN 'Age from 30 to 39' 
 						   WHEN age BETWEEN 40 and 49 THEN 'Age from 40 to 49' 
 						   WHEN age BETWEEN 50 and 59 THEN 'Age from 50 to 59'
-						   WHEN age >= 60 THEN '60 +' Else 'Age from 60 and up'
+						   WHEN age >= 60 THEN '60 + Senior Citizen' Else 'Age from 60 and up'
                           END AS AgeGroup
 						  FROM tbl_member
 						  LEFT JOIN tbl_household ON tbl_household.Id = tbl_member.HouseholdId WHERE 1 = 1 $where) entries

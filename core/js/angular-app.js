@@ -100,6 +100,12 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
 			templateUrl: "views/livelihood.html",
 			controller: "AppLivelihoodController",
 		})
+		.state('relationship',
+		{
+			url: '/relationship',
+			templateUrl: "views/relationship.html",
+			controller: "AppRelationshipController",
+		})
 		.state('diagnosis',
 		{
 			url: '/diagnosis',

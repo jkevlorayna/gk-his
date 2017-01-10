@@ -51,8 +51,8 @@ class MemberRepository{
 			$query = $conn->prepare("
 				INSERT INTO 
 					   tbl_member 
-					  (Name,Gender,Age,CivilStatus,HouseholdId,EmploymentStatusId,EducationalAttainmentId) 
-				VALUES(:Name,:Gender,:Age,:CivilStatus,:HouseholdId,:EmploymentStatusId,:EducationalAttainmentId)
+					  (Name,Gender,Age,CivilStatus,HouseholdId,EmploymentStatusId,EducationalAttainmentId,Relationship,DateOfBirth) 
+				VALUES(:Name,:Gender,:Age,:CivilStatus,:HouseholdId,:EmploymentStatusId,:EducationalAttainmentId,:Relationship,:DateOfBirth)
 				");
 			return $query;	
 		}
@@ -67,7 +67,9 @@ class MemberRepository{
 					   CivilStatus = :CivilStatus,
 					   HouseholdId = :HouseholdId,
 					   EmploymentStatusId = :EmploymentStatusId,
-					   EducationalAttainmentId = :EducationalAttainmentId
+					   EducationalAttainmentId = :EducationalAttainmentId,
+					   Relationship = :Relationship,
+					   DateOfBirth = :DateOfBirth
 					   WHERE Id = :Id
 				");
 			return $query;	
@@ -81,6 +83,8 @@ class MemberRepository{
 			$POST->HouseholdId = !isset($POST->HouseholdId) ? '' : $POST->HouseholdId; 
 			$POST->EmploymentStatusId = !isset($POST->EmploymentStatusId) ? '' : $POST->EmploymentStatusId; 
 			$POST->EducationalAttainmentId = !isset($POST->EducationalAttainmentId) ? '' : $POST->EducationalAttainmentId; 
+			$POST->Relationship = !isset($POST->Relationship) ? '' : $POST->Relationship; 
+			$POST->DateOfBirth = !isset($POST->DateOfBirth) ? '' : $POST->DateOfBirth; 
 			return $POST;
 		}
 		public function Save($POST ){
@@ -100,6 +104,8 @@ class MemberRepository{
 			$query->bindParam(':HouseholdId', $POST->HouseholdId);
 			$query->bindParam(':EmploymentStatusId', $POST->EmploymentStatusId);
 			$query->bindParam(':EducationalAttainmentId', $POST->EducationalAttainmentId);
+			$query->bindParam(':Relationship', $POST->Relationship);
+			$query->bindParam(':DateOfBirth', $POST->DateOfBirth);
 
 
 			$query->execute();	

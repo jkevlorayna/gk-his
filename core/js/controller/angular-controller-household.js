@@ -63,14 +63,15 @@ app.controller('AppHouseholdModalController', function ($rootScope,$scope, $http
     }
 });	
 
-app.controller('AppHouseholdFormController', function ($scope, $http, $q, $location, svcHouseHold,svcLivelihood,growl,$uibModal,$stateParams,svcEmploymentStatus,svcEducationalAttainment,svcVillage) {
+app.controller('AppHouseholdFormController', function ($scope, $http, $q, $location, svcHouseHold,svcLivelihood,growl,$uibModal,$stateParams,svcEmploymentStatus,svcEducationalAttainment,svcVillage,svcRelationship) {
 
 	$scope.Id = $stateParams.Id;
 	$scope.Year = $stateParams.Year;
-	$q.all([svcLivelihood.List('',0,0),svcEmploymentStatus.List('',0,0),svcEducationalAttainment.List('',0,0)]).then(function(r){
+	$q.all([svcLivelihood.List('',0,0),svcEmploymentStatus.List('',0,0),svcEducationalAttainment.List('',0,0),svcRelationship.List('',0,0)]).then(function(r){
 		$scope.livelihoodList = r[0].Results;
 		$scope.employmentStatusList = r[1].Results;
 		$scope.educationalAttainmentList = r[2].Results;
+		$scope.RelationshipList = r[3].Results;
 	})
 	
 	$scope.SearchVillage = function(search){
@@ -85,9 +86,21 @@ app.controller('AppHouseholdFormController', function ($scope, $http, $q, $locat
 	$scope.getById = function(){
 		svcHouseHold.GetById($scope.Id).then(function(r){
 			$scope.formData = r;
+			angular.forEach($scope.formData.MemberList,function(row,index){
+				row.DateOfBirth = moment(row.DateOfBirth).toDate();
+			})
 			$scope.formData.SurveyDate = new Date(r.SurveyDate);
 		})	
 	}
+	
+		$scope.calculateAge = function calculateAge(row) { // birthday is a date
+			if(row.DateOfBirth != undefined){
+				var ageDifMs = Date.now() - row.DateOfBirth.getTime();
+				var ageDate = new Date(ageDifMs); // miliseconds from epoch
+				row.Age =  Math.abs(ageDate.getUTCFullYear() - 1970);
+			}
+		}
+		
 	if($scope.Id == 0){
 		$scope.formData = { SurveyDate: new Date() }
 		$scope.formData.MemberList = [];

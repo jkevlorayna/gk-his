@@ -17,7 +17,5 @@
 	<link href="<?php echo $path; ?>css/style.css" rel="stylesheet" />	
 	<link href="<?php echo $path; ?>css/tablesort.css" rel="stylesheet" />	
 	<link href="<?php echo $path; ?>css/sass/style.css" rel="stylesheet" />
-	<link href="<?php echo $path; ?>css/treasure-overlay-spinner.css" rel="stylesheet">
-
-
+	<link href="<?php echo $path; ?>css/loading-bar.css" rel="stylesheet">
 </head>

@@ -43,10 +43,12 @@
 				<tr>
 					<td>Name</td>
 					<td>Gender</td>
+					<td>Date of Birth</td>
 					<td>Age</td>
 					<td>Status</td>
 					<td>Employment Status</td>
 					<td>Educational Attainment</td>
+					<td>Relationship</td>
 					<td></td>
 				</tr>
 			</thead>
@@ -60,7 +62,15 @@
 						</select>
 					</td>
 					<td>
-						<input class="form-control" ng-model="row.Age">
+						<div class="input-group">
+							<input type="text" ng-change="calculateAge(row)" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="row.DateOfBirth" is-open="row.popup1" datepicker-options="dateOptions"  close-text="Close" />
+							<span class="input-group-btn">
+							<button type="button" class="btn btn-default" ng-click="row.popup1=true"><i class="glyphicon glyphicon-calendar"></i></button>
+							</span>
+						</div>	
+					</td>
+					<td>
+						<input style="width:60px;" class="form-control text-center" ng-model="row.Age" readonly>
 					</td>
 					<td>
 						<select class="form-control" ng-model="row.CivilStatus">
@@ -75,6 +85,10 @@
 					</td>
 					<td>
 						<select class="form-control" ng-model="row.EducationalAttainmentId" ng-options="ea.Id as ea.Name for ea in educationalAttainmentList">
+						</select>
+					</td>
+					<td>
+						<select class="form-control" ng-model="row.Relationship" ng-options="r.Id as r.Name for r in RelationshipList">
 						</select>
 					</td>
 					<td>	
