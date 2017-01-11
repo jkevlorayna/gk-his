@@ -30,17 +30,18 @@ class VillageRepository{
 		}
 		public function Create(){
 			global $conn;
-			$query = $conn->prepare("INSERT INTO tbl_village (Name) VALUES(:Name)");
+			$query = $conn->prepare("INSERT INTO tbl_village (Name,Description) VALUES(:Name,:Description)");
 			return $query;	
 		}
 		public function Update(){
 			global $conn;
-			$query = $conn->prepare("UPDATE tbl_village SET Name = :Name WHERE Id = :Id");
+			$query = $conn->prepare("UPDATE tbl_village SET Name = :Name , Description = :Description WHERE Id = :Id");
 			return $query;	
 		}
 		public function Transform($POST){
 			$POST->Id = !isset($POST->Id) ? 0 : $POST->Id;
 			$POST->Name = !isset($POST->Name) ? '' : $POST->Name; 
+			$POST->Description = !isset($POST->Description) ? '' : $POST->Description; 
 			return $POST;
 		}
 		function Save($POST){
@@ -52,6 +53,7 @@ class VillageRepository{
 				$query->bindParam(':Id', $POST->Id);
 			}
 			$query->bindParam(':Name', $POST->Name);
+			$query->bindParam(':Description', $POST->Description);
 			$query->execute();	
 			
 			if($POST->Id == 0){ $POST->Id = $conn->lastInsertId(); }

@@ -30,8 +30,21 @@
 	</div>	
   </div>
 </div>
+
+<div class="form-inline">
+  <div class="form-group">
+    <label> Access to Potable Water:</label>
+    <input type="checkbox"  ng-model="formData.AccessWater" >
+  </div>
+  <div class="form-group">
+    <label>Access to Electricity:</label>
+   <input type="checkbox"  ng-model="formData.AccessElectricity" >
+  </div>
+
+</div>
 			
-						
+		
+	
 
 	<hr>	
 		<div class="form-group">
@@ -63,7 +76,7 @@
 					</td>
 					<td>
 						<div class="input-group">
-							<input type="text" ng-change="calculateAge(row)" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="row.DateOfBirth" is-open="row.popup1" datepicker-options="dateOptions"  close-text="Close" />
+							<input style="width:80px;" type="text" ng-change="calculateAge(row)" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="row.DateOfBirth" is-open="row.popup1" datepicker-options="dateOptions"  close-text="Close" />
 							<span class="input-group-btn">
 							<button type="button" class="btn btn-default" ng-click="row.popup1=true"><i class="glyphicon glyphicon-calendar"></i></button>
 							</span>

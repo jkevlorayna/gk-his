@@ -3,6 +3,10 @@
 		$HouseholdRepo = new HouseholdRepository();
 		$MemberRepo = new MemberRepository();
 		$result = $HouseholdRepo->Get($id);
+		
+		$result->AccessWater = $result->AccessWater == 1 ? true : false;
+		$result->AccessElectricity = $result->AccessElectricity == 1 ? true : false;
+		
 		$result->MemberList = $MemberRepo->GetByHouseholdId($id);
 		echo json_encode($result);
 	});

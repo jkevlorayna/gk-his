@@ -7,16 +7,20 @@
 						</div>
 
 <div class="row">
-	<div class="col-md-4">
+	<div class="col-md-3">
 		<form method="POST"  ng-submit="save()">
 				<div class="form-group">
 					<label for="exampleInputPassword1">Village</label>
 					<input type="text" ng-model="formData.Name"  class="form-control" required>
 				</div>
+				<div class="form-group">
+					<label for="exampleInputPassword1">Description</label>
+					<input type="text" ng-model="formData.Description"  class="form-control" required>
+				</div>
 				<button type="submit"  class="btn btn-success"><i class="fa fa-save"></i> Save</button>
 		</form>
 	</div>
-	<div class="col-md-8">
+	<div class="col-md-9">
 					<form ng-submit="load()">
 						<div class="input-group col-sm-5">
 							<input type="text" class="form-control" ng-model="searchText">
@@ -30,12 +34,14 @@
 				<thead>
 					<tr>
 						<th ts-criteria="Name" ts-default>Village</th>
+						<th ts-criteria="Description" ts-default>Description</th>
 						<th width="20%"></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr ng-repeat="row in list">
 						<td>{{row.Name}}</td>
+						<td>{{row.Description}}</td>
 						<td>
 							<button class="btn btn-success" ng-click="getById(row.Id)"> <i class="fa fa-edit"></i> </button>
 							<button class="btn btn-danger" ng-click="openDeleteModal('md',row.Id)"> <i class="fa fa-trash-o"></i> </button>

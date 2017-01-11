@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 11, 2017 at 12:08 AM
+-- Generation Time: Jan 11, 2017 at 11:58 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -218,25 +218,27 @@ CREATE TABLE IF NOT EXISTS `tbl_household` (
   `HouseholdNo` varchar(50) NOT NULL,
   `SurveyDate` date NOT NULL,
   `Address` varchar(150) NOT NULL,
-  `LivelihoodId` int(11) NOT NULL
+  `LivelihoodId` int(11) NOT NULL,
+  `AccessWater` tinyint(1) NOT NULL,
+  `AccessElectricity` tinyint(1) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_household`
 --
 
-INSERT INTO `tbl_household` (`Id`, `HouseholdNo`, `SurveyDate`, `Address`, `LivelihoodId`) VALUES
-(12, '123', '2015-09-04', 'Village 1', 1),
-(13, '456', '2016-10-16', 'Village 1', 1),
-(15, '455', '2016-10-16', 'Village 1', 2),
-(16, 'sads', '2016-10-17', 'Village 2', 3),
-(17, '4233', '2016-10-16', 'Village 3', 2),
-(19, '2014 -test', '2014-10-16', 'Village 3', 1),
-(20, '2013', '2013-10-16', 'dasd', 1),
-(21, 'dasd', '2012-10-16', 'Village 1', 2),
-(22, 'dasd', '2011-10-16', 'Village 1', 2),
-(23, 'dasd', '2010-10-16', 'Village 1', 2),
-(24, 'test', '2016-12-31', 'Village 1', 1);
+INSERT INTO `tbl_household` (`Id`, `HouseholdNo`, `SurveyDate`, `Address`, `LivelihoodId`, `AccessWater`, `AccessElectricity`) VALUES
+(12, '123', '2015-09-04', 'Village 1', 1, 0, 0),
+(13, '456', '2016-10-16', 'Village 1', 1, 0, 0),
+(15, '455', '2016-10-16', 'Village 1', 2, 0, 0),
+(16, 'sads', '2016-10-17', 'Village 2', 3, 0, 0),
+(17, '4233', '2016-10-16', 'Village 3', 2, 1, 1),
+(19, '2014 -test', '2014-10-16', 'Village 3', 1, 0, 0),
+(20, '2013', '2013-10-16', 'dasd', 1, 0, 0),
+(21, 'dasd', '2012-10-16', 'Village 1', 2, 0, 0),
+(22, 'dasd', '2011-10-16', 'Village 1', 2, 0, 0),
+(23, 'dasd', '2010-10-16', 'Village 1', 2, 0, 0),
+(24, 'test', '2016-12-31', 'Village 1', 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -282,9 +284,9 @@ CREATE TABLE IF NOT EXISTS `tbl_member` (
 --
 
 INSERT INTO `tbl_member` (`Id`, `Name`, `Gender`, `Age`, `CivilStatus`, `HouseholdId`, `EmploymentStatusId`, `EducationalAttainmentId`, `Relationship`, `DateOfBirth`) VALUES
-(85, 'Member 1', 'Male', 1, 'Widow', 17, 1, 2, '', '2017-01-17'),
-(86, 'Member 1', 'Male', 1, 'Widow', 17, 1, 2, '', '2017-01-17'),
-(87, 'member 2', 'Male', 1, 'Widow', 17, 1, 2, '1', '2017-01-18');
+(85, 'Member 1', 'Male', 1, 'Widow', 17, 1, 2, '', '2017-01-16'),
+(86, 'Member 1', 'Male', 1, 'Widow', 17, 1, 2, '', '2017-01-16'),
+(87, 'member 2', 'Male', 1, 'Widow', 17, 1, 2, '1', '2017-01-17');
 
 -- --------------------------------------------------------
 
@@ -428,17 +430,18 @@ INSERT INTO `tbl_user_type` (`Id`, `user_type`) VALUES
 
 CREATE TABLE IF NOT EXISTS `tbl_village` (
 `Id` int(11) NOT NULL,
-  `Name` varchar(100) NOT NULL
+  `Name` varchar(100) NOT NULL,
+  `Description` varchar(150) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_village`
 --
 
-INSERT INTO `tbl_village` (`Id`, `Name`) VALUES
-(1, 'Village 1'),
-(2, 'Village 2'),
-(3, 'Village 3');
+INSERT INTO `tbl_village` (`Id`, `Name`, `Description`) VALUES
+(1, 'Village 1', 'asd'),
+(2, 'Village 2', 'test 123'),
+(3, 'Village 3', '12');
 
 -- --------------------------------------------------------
 
