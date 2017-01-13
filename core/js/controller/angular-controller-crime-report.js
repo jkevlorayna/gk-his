@@ -17,7 +17,7 @@ app.controller('CrimeReportController', function ($scope, $http, $q, $location, 
 	$scope.openDeleteModal = function (size,id) {
 			var modal = $uibModal.open({
 			templateUrl: 'views/deletemodal/deleteModal.html',
-			controller: 'AppCrimeModalController',
+			controller: 'AppCrimeReportModalController',
 			size: size,
 			resolve: {
 				dataId: function () {
@@ -32,13 +32,13 @@ app.controller('CrimeReportController', function ($scope, $http, $q, $location, 
 	
 	
 });
-app.controller('AppCrimeModalController', function ($rootScope,$scope, $http, $q, $location, $filter, svcCrime,growl,$uibModal,dataId,$uibModalInstance) {
+app.controller('AppCrimeReportModalController', function ($rootScope,$scope, $http, $q, $location, $filter, svcCrimeReport,growl,$uibModal,dataId,$uibModalInstance) {
 	$scope.id = dataId;
 	$scope.close = function(){
 		$uibModalInstance.dismiss();
 	}
 	$scope.delete = function () {
-		svcCrime.Delete($scope.id).then(function (response) {
+		svcCrimeReport.Delete($scope.id).then(function (response) {
 			growl.error("Data Successfully Deleted");
 			$scope.close();
         });
@@ -49,7 +49,7 @@ app.controller('AppCrimeModalController', function ($rootScope,$scope, $http, $q
 app.controller('CrimeReportFormController', function ($scope, $http, $q, $location, svcCrime,growl,$uibModal,svcCrimeReport,$stateParams) {
 	$scope.Id = $stateParams.Id;
 	$scope.Year = $stateParams.Year;
-	$scope.PageTitle = $scope.Id == 0 ? 'Add New Crime Report': 'Update Crime Report' ;
+	$scope.PageTitle = $scope.Id == 0 ? 'Add New Violation Report': 'Update Violation Report' ;
 		
 	$scope.pageNo = 1;
 	$scope.pageSize = 10;

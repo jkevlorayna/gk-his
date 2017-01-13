@@ -26,17 +26,18 @@ class CrimeReportRepository{
 		}
 		public function Create(){
 			global $conn;
-			$query = $conn->prepare("INSERT INTO tbl_crime_report (CrimeDate) VALUES(:CrimeDate)");
+			$query = $conn->prepare("INSERT INTO tbl_crime_report (CrimeDate,CrimeTitle) VALUES(:CrimeDate,:CrimeTitle)");
 			return $query;	
 		}
 		public function Update(){
 			global $conn;
-			$query = $conn->prepare("UPDATE tbl_crime_report SET CrimeDate = :CrimeDate WHERE Id = :Id");
+			$query = $conn->prepare("UPDATE tbl_crime_report SET CrimeDate = :CrimeDate , CrimeTitle = :CrimeTitle WHERE Id = :Id");
 			return $query;	
 		}
 		public function Transform($POST){
 			$POST->Id = !isset($POST->Id) ? 0 : $POST->Id;
 			$POST->CrimeDate = !isset($POST->CrimeDate) ? '' : $POST->CrimeDate; 
+			$POST->CrimeTitle = !isset($POST->CrimeTitle) ? '' : $POST->CrimeTitle; 
 			return $POST;
 		}
 		function Save($POST){
@@ -48,6 +49,7 @@ class CrimeReportRepository{
 				$query->bindParam(':Id', $POST->Id);
 			}
 			$query->bindParam(':CrimeDate', $POST->CrimeDate);
+			$query->bindParam(':CrimeTitle', $POST->CrimeTitle);
 			$query->execute();	
 			
 			if($POST->Id == 0){ $POST->Id = $conn->lastInsertId(); }

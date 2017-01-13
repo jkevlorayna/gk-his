@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 11, 2017 at 11:58 PM
+-- Generation Time: Jan 13, 2017 at 11:24 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -59,8 +59,7 @@ CREATE TABLE IF NOT EXISTS `tbl_crime` (
 
 INSERT INTO `tbl_crime` (`Id`, `Name`) VALUES
 (1, 'Murder'),
-(2, 'Rape'),
-(3, 'stealing');
+(2, 'Rape');
 
 -- --------------------------------------------------------
 
@@ -71,16 +70,18 @@ INSERT INTO `tbl_crime` (`Id`, `Name`) VALUES
 CREATE TABLE IF NOT EXISTS `tbl_crime_report` (
 `Id` int(11) NOT NULL,
   `CrimeDate` date NOT NULL,
-  `CrimeTime` time NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `CrimeTime` time NOT NULL,
+  `CrimeTitle` varchar(150) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_crime_report`
 --
 
-INSERT INTO `tbl_crime_report` (`Id`, `CrimeDate`, `CrimeTime`) VALUES
-(1, '2016-11-08', '00:00:00'),
-(2, '2016-11-20', '00:00:00');
+INSERT INTO `tbl_crime_report` (`Id`, `CrimeDate`, `CrimeTime`, `CrimeTitle`) VALUES
+(1, '2016-11-08', '00:00:00', ''),
+(2, '2016-11-20', '00:00:00', ''),
+(3, '2017-01-19', '00:00:00', '');
 
 -- --------------------------------------------------------
 
@@ -92,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `tbl_crime_report_crimes` (
 `Id` int(11) NOT NULL,
   `CrimeReportId` int(11) NOT NULL,
   `Crime` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_crime_report_crimes`
@@ -103,7 +104,10 @@ INSERT INTO `tbl_crime_report_crimes` (`Id`, `CrimeReportId`, `Crime`) VALUES
 (4, 2, 'stealing'),
 (5, 1, 'Murder'),
 (6, 1, 'Murder'),
-(7, 1, 'Rape');
+(7, 1, 'Rape'),
+(8, 3, 'Murder'),
+(9, 4, 'Murder'),
+(10, 4, 'Rape');
 
 -- --------------------------------------------------------
 
@@ -118,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `tbl_crime_report_suspects` (
   `Age` int(11) NOT NULL,
   `Address` varchar(100) NOT NULL,
   `Gender` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_crime_report_suspects`
@@ -126,7 +130,9 @@ CREATE TABLE IF NOT EXISTS `tbl_crime_report_suspects` (
 
 INSERT INTO `tbl_crime_report_suspects` (`Id`, `CrimeReportId`, `Name`, `Age`, `Address`, `Gender`) VALUES
 (1, 2, 'Suspect 1', 0, '', 'Male'),
-(2, 2, 'Suspect 2', 0, '', 'Female');
+(2, 2, 'Suspect 2', 0, '', 'Female'),
+(3, 3, 'das', 222, '32', 'Female'),
+(4, 4, '2321', 21, 'asdas', 'Male');
 
 -- --------------------------------------------------------
 
@@ -141,7 +147,7 @@ CREATE TABLE IF NOT EXISTS `tbl_crime_report_victims` (
   `Age` int(11) NOT NULL,
   `Address` varchar(100) NOT NULL,
   `Gender` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_crime_report_victims`
@@ -149,7 +155,9 @@ CREATE TABLE IF NOT EXISTS `tbl_crime_report_victims` (
 
 INSERT INTO `tbl_crime_report_victims` (`Id`, `CrimeReportId`, `Name`, `Age`, `Address`, `Gender`) VALUES
 (1, 2, 'Victim 1', 10, 'Bacolod City', 'Male'),
-(2, 2, 'Victim 2', 22, 'Bacolod City', 'Female');
+(2, 2, 'Victim 2', 22, 'Bacolod City', 'Female'),
+(3, 3, 'dasd', 22, 'eesasd', 'Female'),
+(4, 4, 'asd', 2, 'adasd', 'Female');
 
 -- --------------------------------------------------------
 
@@ -612,22 +620,22 @@ MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT for table `tbl_crime_report`
 --
 ALTER TABLE `tbl_crime_report`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tbl_crime_report_crimes`
 --
 ALTER TABLE `tbl_crime_report_crimes`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `tbl_crime_report_suspects`
 --
 ALTER TABLE `tbl_crime_report_suspects`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tbl_crime_report_victims`
 --
 ALTER TABLE `tbl_crime_report_victims`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tbl_diagnosis`
 --
