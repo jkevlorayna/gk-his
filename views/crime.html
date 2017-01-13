@@ -1,14 +1,14 @@
 
 <div class="block-flat">
 						<div class="header">										
-								<h3>Crime List</h3>
+								<h3>Violation List</h3>
 						</div>
 
 <div class="row">
 	<div class="col-md-3">
 		<form method="POST"  ng-submit="save()">
 				<div class="form-group">
-					<label for="exampleInputPassword1">Crime</label>
+					<label for="exampleInputPassword1">Violation</label>
 					<input type="text" ng-model="formData.Name"  class="form-control" required>
 				</div>
 				<button type="submit"  class="btn btn-success"><i class="fa fa-save"></i> Save</button>
@@ -27,7 +27,7 @@
 				<table class="table table-bordered table-condensed" ts-wrapper>
 				<thead>
 					<tr>
-						<th ts-criteria="Name" ts-default>Crime</th>
+						<th ts-criteria="Name" ts-default>Violation</th>
 						<th width="20%"></th>
 					</tr>
 				</thead>

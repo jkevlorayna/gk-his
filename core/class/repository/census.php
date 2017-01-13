@@ -112,12 +112,12 @@ class CensusRepository{
 
 			$query = $conn->query("SELECT AgeGroup, count(*) AS Number 
 					FROM (SELECT
-						  CASE WHEN age BETWEEN 0 AND 9 THEN 'Age from 0 to 9' 
-						   WHEN age BETWEEN 10 and 19 THEN 'Age from 10 to 19' 
-						   WHEN age BETWEEN 20 and 29 THEN 'Age from 20 to 29' 
-						   WHEN age BETWEEN 30 and 39 THEN 'Age from 30 to 39' 
-						   WHEN age BETWEEN 40 and 49 THEN 'Age from 40 to 49' 
-						   WHEN age BETWEEN 50 and 59 THEN 'Age from 50 to 59'
+						  CASE WHEN age BETWEEN 1 AND 3 THEN 'Toddler 1-3 yrs old' 
+						   WHEN age BETWEEN 4 and 6 THEN 'Preschool: 4-6 yrs old' 
+						   WHEN age BETWEEN 7 and 12 THEN 'Gradeschooler: 5-12 yrs Old' 
+						   WHEN age BETWEEN 13 and 18 THEN 'Teens:	13-18 yrs Old' 
+						   WHEN age BETWEEN 19 and 23 THEN 'Young Adult: 19-23 yrs Old' 
+						   WHEN age BETWEEN 24 and 59 THEN 'Adult: 24-59 yrs Old' 
 						   WHEN age >= 60 THEN '60 + Senior Citizen' Else 'Age from 60 and up'
                           END AS AgeGroup
 						  FROM tbl_member
