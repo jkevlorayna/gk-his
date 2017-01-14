@@ -27,7 +27,7 @@ if(!isset($_SESSION['isAuthenticated'])){ $isAuthenticated = false; }else{ $isAu
 					<a href="#"><i class="fa fa-folder"></i><span>Selection Entry</span></a> 
 					<ul class="sub-menu">						
 						<li><a href="#/livelihood"><i class="fa fa-folder"></i> Livelihood </a></li>
-						<li><a href="#/relationship"><i class="fa fa-folder"></i> Relationship </a></li>
+						<li><a href="#/relationship"><i class="fa fa-folder"></i> Member Type </a></li>
 						<li><a href="#/diagnosis"><i class="fa fa-folder"></i> Diagnosis </a></li>
 						<li><a href="#/employmentStatus"><i class="fa fa-folder"></i> Employment Status </a></li>
 						<li><a href="#/educationalAttainment"><i class="fa fa-folder"></i> Educational Attainment </a></li>
