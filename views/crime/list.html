@@ -34,12 +34,16 @@
 				<thead>
 					<tr>
 						<th ts-criteria="CrimeDate" ts-default>Date</th>
+						<th ts-criteria="Cwhat" ts-default>What</th>
+						<th ts-criteria="Cwhere" ts-default>Where</th>
 						<th style="width:10%;"></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr ng-repeat="row in list" ts-repeat>
 						<td>{{row.CrimeDate | date:'MM/dd/yyyy'}}</td>
+						<td>{{row.Cwhat}}</td>
+						<td>{{row.Cwhere}}</td>
 						<td>
 							<a class="btn btn-success btn-sm" href="#/crime/report/{{Year}}/form/{{row.Id}}">  <i class="fa fa-edit"></i> </a>
 							<button class="btn btn-danger btn-sm" ng-click="openDeleteModal('md',row.Id)">  <i class="fa fa-trash-o"></i> </button>

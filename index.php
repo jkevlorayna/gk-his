@@ -24,11 +24,11 @@ if(!isset($_SESSION['isAuthenticated'])){ $isAuthenticated = false; }else{ $isAu
 				<li><a href="#/crime/report/list/{{Year}}"><i class="fa fa-folder"></i>  Violation Report</a></li>
 		
 				<li>
-					<a href="#"><i class="fa fa-folder"></i><span>Selection Entry</span></a> 
+					<a href="#"><i class="fa fa-folder"></i><span>Maintenance</span></a> 
 					<ul class="sub-menu">						
 						<li><a href="#/livelihood"><i class="fa fa-folder"></i> Livelihood </a></li>
 						<li><a href="#/relationship"><i class="fa fa-folder"></i> Member Type </a></li>
-						<li><a href="#/diagnosis"><i class="fa fa-folder"></i> Diagnosis </a></li>
+						<!-- <li><a href="#/diagnosis"><i class="fa fa-folder"></i> Diagnosis </a></li> -->
 						<li><a href="#/employmentStatus"><i class="fa fa-folder"></i> Employment Status </a></li>
 						<li><a href="#/educationalAttainment"><i class="fa fa-folder"></i> Educational Attainment </a></li>
 						<li><a href="#/year"><i class="fa fa-folder"></i> Year </a></li>

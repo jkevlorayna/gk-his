@@ -26,18 +26,19 @@ class CrimeReportRepository{
 		}
 		public function Create(){
 			global $conn;
-			$query = $conn->prepare("INSERT INTO tbl_crime_report (CrimeDate,CrimeTitle) VALUES(:CrimeDate,:CrimeTitle)");
+			$query = $conn->prepare("INSERT INTO tbl_crime_report (CrimeDate,Cwhat,Cwhere) VALUES(:CrimeDate,:Cwhat,:Cwhere)");
 			return $query;	
 		}
 		public function Update(){
 			global $conn;
-			$query = $conn->prepare("UPDATE tbl_crime_report SET CrimeDate = :CrimeDate , CrimeTitle = :CrimeTitle WHERE Id = :Id");
+			$query = $conn->prepare("UPDATE tbl_crime_report SET CrimeDate = :CrimeDate , Cwhat = :Cwhat , Cwhere = :Cwhere WHERE Id = :Id");
 			return $query;	
 		}
 		public function Transform($POST){
 			$POST->Id = !isset($POST->Id) ? 0 : $POST->Id;
 			$POST->CrimeDate = !isset($POST->CrimeDate) ? '' : $POST->CrimeDate; 
-			$POST->CrimeTitle = !isset($POST->CrimeTitle) ? '' : $POST->CrimeTitle; 
+			$POST->Cwhat = !isset($POST->Cwhat) ? '' : $POST->Cwhat; 
+			$POST->Cwhere = !isset($POST->Cwhere) ? '' : $POST->Cwhere; 
 			return $POST;
 		}
 		function Save($POST){
@@ -49,7 +50,8 @@ class CrimeReportRepository{
 				$query->bindParam(':Id', $POST->Id);
 			}
 			$query->bindParam(':CrimeDate', $POST->CrimeDate);
-			$query->bindParam(':CrimeTitle', $POST->CrimeTitle);
+			$query->bindParam(':Cwhat', $POST->Cwhat);
+			$query->bindParam(':Cwhere', $POST->Cwhere);
 			$query->execute();	
 			
 			if($POST->Id == 0){ $POST->Id = $conn->lastInsertId(); }

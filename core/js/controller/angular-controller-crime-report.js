@@ -63,7 +63,7 @@ app.controller('CrimeReportFormController', function ($scope, $http, $q, $locati
     $scope.loadCrime()
 	
 
-	$scope.formData = {  }
+	$scope.formData = {   }
 	$scope.save = function () {
 		svcCrimeReport.Save($scope.formData).then(function (r) {
 			growl.success("Data Successfully Save");
@@ -77,7 +77,7 @@ app.controller('CrimeReportFormController', function ($scope, $http, $q, $locati
         });
     }
 	
-	$scope.formData = $scope.Id == 0 ? { Crimes:[] , Victims:[] , Suspects:[] } : $scope.getById();
+	$scope.formData = $scope.Id == 0 ? { CrimeDate:new Date() , Crimes:[] , Victims:[] , Suspects:[] } : $scope.getById();
 
 	$scope.addCrime = function(){
 		$scope.formData.Crimes.push({Crime:''})
