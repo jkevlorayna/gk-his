@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 13, 2017 at 11:24 PM
+-- Generation Time: Feb 19, 2017 at 08:48 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -59,7 +59,8 @@ CREATE TABLE IF NOT EXISTS `tbl_crime` (
 
 INSERT INTO `tbl_crime` (`Id`, `Name`) VALUES
 (1, 'Murder'),
-(2, 'Rape');
+(2, 'Rape'),
+(3, 'das22');
 
 -- --------------------------------------------------------
 
@@ -71,17 +72,19 @@ CREATE TABLE IF NOT EXISTS `tbl_crime_report` (
 `Id` int(11) NOT NULL,
   `CrimeDate` date NOT NULL,
   `CrimeTime` time NOT NULL,
-  `CrimeTitle` varchar(150) NOT NULL
+  `Cwhat` varchar(150) NOT NULL,
+  `Cwhere` varchar(100) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_crime_report`
 --
 
-INSERT INTO `tbl_crime_report` (`Id`, `CrimeDate`, `CrimeTime`, `CrimeTitle`) VALUES
-(1, '2016-11-08', '00:00:00', ''),
-(2, '2016-11-20', '00:00:00', ''),
-(3, '2017-01-19', '00:00:00', '');
+INSERT INTO `tbl_crime_report` (`Id`, `CrimeDate`, `CrimeTime`, `Cwhat`, `Cwhere`) VALUES
+(1, '2016-11-08', '00:00:00', '', ''),
+(2, '2016-11-20', '00:00:00', '', ''),
+(3, '2017-01-19', '00:00:00', '', ''),
+(4, '2017-02-18', '00:00:00', 'test', 'test');
 
 -- --------------------------------------------------------
 
@@ -147,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `tbl_crime_report_victims` (
   `Age` int(11) NOT NULL,
   `Address` varchar(100) NOT NULL,
   `Gender` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_crime_report_victims`
@@ -157,7 +160,8 @@ INSERT INTO `tbl_crime_report_victims` (`Id`, `CrimeReportId`, `Name`, `Age`, `A
 (1, 2, 'Victim 1', 10, 'Bacolod City', 'Male'),
 (2, 2, 'Victim 2', 22, 'Bacolod City', 'Female'),
 (3, 3, 'dasd', 22, 'eesasd', 'Female'),
-(4, 4, 'asd', 2, 'adasd', 'Female');
+(4, 4, 'asd', 2, 'adasd', 'Female'),
+(5, 4, 'sad', 23, '', 'Male');
 
 -- --------------------------------------------------------
 
@@ -285,16 +289,20 @@ CREATE TABLE IF NOT EXISTS `tbl_member` (
   `EducationalAttainmentId` int(11) NOT NULL,
   `Relationship` varchar(100) NOT NULL,
   `DateOfBirth` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_member`
 --
 
 INSERT INTO `tbl_member` (`Id`, `Name`, `Gender`, `Age`, `CivilStatus`, `HouseholdId`, `EmploymentStatusId`, `EducationalAttainmentId`, `Relationship`, `DateOfBirth`) VALUES
-(85, 'Member 1', 'Male', 1, 'Widow', 17, 1, 2, '', '2017-01-16'),
-(86, 'Member 1', 'Male', 1, 'Widow', 17, 1, 2, '', '2017-01-16'),
-(87, 'member 2', 'Male', 1, 'Widow', 17, 1, 2, '1', '2017-01-17');
+(85, 'Member 1', 'Male', 1, 'Widow', 17, 1, 2, '', '2017-01-15'),
+(86, 'Member 2', 'Male', 2, 'Widow', 17, 1, 2, '', '2017-01-15'),
+(87, 'member 3', 'Male', 3, 'Widow', 17, 1, 2, '1', '2017-01-16'),
+(88, 'member 4', 'Male', 0, 'Single', 17, 2, 0, '', '0000-00-00'),
+(89, 'member 4', 'Male', 4, 'Single', 17, 2, 0, '', '2017-01-29'),
+(90, 'member 5', 'Male', 3, '', 17, 0, 0, '', '2017-01-24'),
+(91, 'member 6', 'Female', 5, '', 17, 0, 0, '', '2017-01-30');
 
 -- --------------------------------------------------------
 
@@ -635,7 +643,7 @@ MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 -- AUTO_INCREMENT for table `tbl_crime_report_victims`
 --
 ALTER TABLE `tbl_crime_report_victims`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tbl_diagnosis`
 --
@@ -665,7 +673,7 @@ MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT for table `tbl_member`
 --
 ALTER TABLE `tbl_member`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=88;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=92;
 --
 -- AUTO_INCREMENT for table `tbl_relationship`
 --
